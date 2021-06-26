@@ -1,7 +1,8 @@
 import { Disclosure } from '@headlessui/react';
 import React from 'react';
 import logo from './itinerantlogo.png'
-import Calendar from './Calendar';
+import CalendarTest from './Calendar';
+import Calendar from 'react-calendar';
 
 
 const navigation = [
@@ -19,7 +20,7 @@ const navigation = [
   {
     name: 'Calendar',
     current: false,
-    children: [
+    children: [{}
 
     ],
   },
@@ -90,12 +91,13 @@ export default function NavBarNew() {
                             key={subItem.name}
                             href={subItem.href}
                             className="group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium text-gray-600 rounded-md hover:text-gray-900 hover:bg-gray-50"
+
                             >
                             {subItem.name}
-
                             </a>
+
                         ))}
-                        <Calendar />
+                        <div >{item.name==='Calendar' ? <Calendar />: null } </div>
                         </Disclosure.Panel>
                     </>
                     )}

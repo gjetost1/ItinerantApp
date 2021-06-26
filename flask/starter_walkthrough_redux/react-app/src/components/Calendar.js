@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Calendar() {
+export default function CalendarTest() {
     return (
     <div className="w-1/1 h-1/6">
         <div className=" bg-yellow-500 w-1/1 h-1/6 mx-auto py-20 px-6 ">
