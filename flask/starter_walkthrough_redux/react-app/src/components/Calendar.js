@@ -2,9 +2,9 @@ import React from "react";
 
 export default function Calendar() {
     return (
-    <div className="w-1/1">
-        <div className=" bg-yellow-500 w-full mx-auto container py-20 px-6 w-100">
-            <div className="w-full flex items-center justify-between">
+    <div className="w-1/1 h-1/6">
+        <div className=" bg-yellow-500 w-1/1 h-1/6 mx-auto py-20 px-6 ">
+            <div className="w-1/1 h-1/6 flex items-center justify-between">
                 <div>
                     <h4 className="text-xs xl:text-base text-gray-900 dark:text-gray-100">September 2018</h4>
                 </div>
