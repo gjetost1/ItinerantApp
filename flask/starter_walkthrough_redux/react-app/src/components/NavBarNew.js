@@ -6,21 +6,21 @@ import Calendar from 'react-calendar';
 
 
 const navigation = [
-  { name: 'Dashboard', href: '#', current: true },
+  { name: 'Dashboard', href: '/', current: true },
   {
     name: 'Destinations',
     current: false,
     children: [
-      { name: 'Lodgings', href: '#' },
-      { name: 'Museums', href: '#' },
-      { name: 'Restaurants', href: '#' },
-      { name: 'Parks', href: '#' },
+      { name: 'Lodgings', href: '/destinations' },
+      { name: 'Museums', href: '/destinations' },
+      { name: 'Restaurants', href: '/destinations/' },
+      { name: 'Parks', href: '/destinations/' },
     ],
   },
   {
     name: 'Calendar',
     current: false,
-    children: [{}
+    children: [{ name: 'Full Calendar', href: '/calendar' },
 
     ],
   },

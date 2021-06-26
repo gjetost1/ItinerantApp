@@ -10,6 +10,9 @@ import User from "./components/User";
 import NavBarNew from "./components/NavBarNew";
 import { authenticate } from "./store/session";
 import Map from "./components/Map"
+import Calendar from "react-calendar";
+import CalendarTest from "./components/Calendar";
+import Destinations from "./components/destinations/Destinations";
 
 function App() {
   // const [authenticated, setAuthenticated] = useState(false);
@@ -47,7 +50,12 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path="/" exact={true} >
           <Map/>
-
+        </ProtectedRoute>
+        <ProtectedRoute path="/destinations" exact={true} >
+          <Destinations/>
+        </ProtectedRoute>
+        <ProtectedRoute path="/calendar" exact={true} >
+          <CalendarTest/>
         </ProtectedRoute>
       </Switch>
 

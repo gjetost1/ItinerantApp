@@ -1,10 +1,10 @@
 import React from "react";
 
-export default function CalendarTest() {
+export default function Calendar() {
     return (
-    <div className="w-1/1 h-1/6">
-        <div className=" bg-yellow-500 w-1/1 h-1/6 mx-auto py-20 px-6 ">
-            <div className="w-1/1 h-1/6 flex items-center justify-between">
+    <div className="ml-auto w-5/6 h-5/6 flex justify-start">
+        <div className="ml-auto w-5/6 h-5/6 py-20 px-6">
+            <div className=" ml-auto w-5/6 flex items-center justify-between">
                 <div>
                     <h4 className="text-xs xl:text-base text-gray-900 dark:text-gray-100">September 2018</h4>
                 </div>
@@ -36,8 +36,8 @@ export default function CalendarTest() {
                     </a>
                 </div>
             </div>
-            <div className=" w-1/1 h-1/1  overflow-x-scroll xl:overflow-x-hidden mt-4">
-                <table className=" w-1/1 h-1/1 flex-shrink bg-white dark:bg-gray-900">
+            <div className="w-full overflow-x-scroll xl:overflow-x-hidden mt-4">
+                <table className="min-w-full bg-white dark:bg-gray-900">
                     <thead className="items-center">
                         <tr className="h-20">
                             <th className="px-10">
@@ -96,7 +96,7 @@ export default function CalendarTest() {
                                 <div className="absolute w-64 xl:w-1/5 ml-3 -mt-16 flex items-center bg-gray-100 dark:bg-gray-800 border-l-4 border-indigo-700 rounded py-1">
                                     <div className="ml-1">
                                         <p className="text-xs dark:text-gray-100 text-gray-900">4 Sept – 5 Sept</p>
-                                        <p className="text-xs text-gray-800 dark:text-gray-100 mt-0.5">Vacation</p>
+                                        <p className="text-xs text-gray-800 dark:text-gray-100 mt-0.5">Sleep under a beautiful waterfall, lulled by the roar.</p>
                                     </div>
                                 </div>
                             </td>
@@ -109,7 +109,7 @@ export default function CalendarTest() {
                                     <div className="w-3 h-3 bg-indigo-700 rounded" />
                                     <div className="ml-2">
                                         <p className="text-xs dark:text-gray-100 text-gray-900">13:00 - 14:40</p>
-                                        <p className="text-xs text-gray-800 dark:text-gray-100 mt-1">Doctor’s</p>
+                                        <p className="text-xs text-gray-800 dark:text-gray-100 mt-1">TURTLE AUCTION WITH REPTILE TRAFFICKERS</p>
                                     </div>
                                 </div>
                             </td>
@@ -135,7 +135,7 @@ export default function CalendarTest() {
                                 <div className="absolute custom-width ml-3 -mt-16 flex items-center bg-gray-100 dark:bg-gray-800 border-l-4 border-indigo-700 rounded py-1">
                                     <div className="ml-1">
                                         <p className="text-xs dark:text-gray-100 text-gray-900">12 Sept – 15 Sept</p>
-                                        <p className="text-xs text-gray-800 dark:text-gray-100 mt-0.5">Tokyo - Business Trip</p>
+                                        <p className="text-xs text-gray-800 dark:text-gray-100 mt-0.5">Short hitch along rails to Colorado</p>
                                     </div>
                                 </div>
                             </td>
