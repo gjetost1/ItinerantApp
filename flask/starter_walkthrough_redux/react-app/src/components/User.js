@@ -23,8 +23,8 @@ function User() {
   }
 
   return (
-    <ul>
-      <li>
+    <ul style={{textAlign:"right"}}>
+      <li style={{textAlign:"right"}}>
         <strong>User Id</strong> {userId}
       </li>
       <li>
