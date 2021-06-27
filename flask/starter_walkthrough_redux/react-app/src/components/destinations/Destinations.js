@@ -4,16 +4,22 @@ import {getAllDestinations} from '../../store/destinations';
 
 export default function Destinations() {
 
+    const destinations=useSelector((state)=>state.destinations.destinations)
     const dispatch=useDispatch()
-    const destination=useSelector(state=>Object.values(state.destinations))
     useEffect(()=>{
         dispatch(getAllDestinations())
     },[dispatch])
+    console.log(destinations)
+    if (!destinations) {
+        return null
+    } else {
+        return (
+           <div style={{textAlign:"right" }}>All Venues
+            <p>____</p>
+           <div style={{textAlign:"right"}}>{destinations.name}</div>
+           </div>
 
-    return (
-       <h2 style={{textAlign:"right"}}>STUFF WILL GO HERE VENTUALLY
-       <h2 style={{textAlign:"right"}}>ALL KINDS OF STUFF YOU'LL SEE</h2>
-       </h2>
+        )
+    }
 
-    )
 }
