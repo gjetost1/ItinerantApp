@@ -14,7 +14,7 @@ export default function Destinations() {
         return null
     } else {
         return (
-           <div style={{textAlign:"right" }}>All Destinations
+           <div style={{textAlign:"right", margin: "5px" }}>All Destinations
             <p>____</p>
             {destinations.map(destination => <li>{destination.name}</li> )}
            </div>
