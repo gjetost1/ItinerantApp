@@ -13,7 +13,7 @@ class Calendar(db.Model):
     notes = db.Column(db.String(200), nullable=False)
 
 
-    users = relationship("User", back_populates="destinations")
+    users = relationship("User", back_populates="calendars")
 
     def to_dict(self):
         return {
