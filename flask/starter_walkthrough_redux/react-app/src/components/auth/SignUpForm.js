@@ -39,7 +39,7 @@ const SignUpForm = () => {
   }
 
   return (
-    <form onSubmit={onSignUp}>
+    <form onSubmit={onSignUp} style={{textAlign:"right"}}>
       <div>
         <label>User Name</label>
         <input

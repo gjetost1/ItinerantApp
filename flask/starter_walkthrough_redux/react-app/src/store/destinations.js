@@ -1,17 +1,27 @@
-const GET_ALL='destinations/GET_ALL'
-const GET_ONE='destinations/GET_ONE'
+const LOAD ='destinations/LOAD'
+const CREATE='destinations/CREATE'
+const DELETE = 'destinations/DELETE';
+const EDIT = 'destinations/EDIT';
 
-
-const getAll= (destinations)=>({
-    type:GET_ALL,
+const load = (destinations)=>({
+    type:LOAD,
     destinations
 })
 
-const getOne = (destination)=>({
-    type:GET_ONE,
-    destination
+const create = (destinations)=>({
+    type:CREATE,
+    destinations
 })
 
+const deleter = (destinations)=>({
+    type: DELETE,
+    destinations
+})
+
+const edit = (destinations)=>({
+    type:EDIT,
+    destinations
+})
 
 
 export const getAllDestinations = () => async (dispatch) => {
@@ -19,33 +29,36 @@ export const getAllDestinations = () => async (dispatch) => {
 
     if (res.ok){
         const destinations = await res.json()
-        dispatch(getAll(destinations))
+        dispatch(load(destinations))
         return destinations
     }
 }
 
+export const createDestination = (destination) => async (dispatch) => {
+    const res = await fetch(`/api/destinations/create`, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(destination)
 
-// export const getOneDestination = (id) => async (dispatch) => {
-//     const res = await fetch(`/api/destinations/${id}`)
-
-//     if (res.ok){
-//         const destination = await res.json()
-//         dispatch(getOne(destination))
-//     }
-// }
-
-
+    });
+    if(res.ok){
+        const destination = await res.json();
+        dispatch(create(destination));
+        return destination;
+    }
+};
 
 export default function destinationReducer(state={}, action){
-    let newState={}
+    let newState;
     switch(action.type){
-        case GET_ALL:
+        case LOAD:
             newState = Object.assign({}, state);
             newState.destinations = action.destinations;
             return action.destinations
-        // case GET_ONE:
-        //     newState[action.destination.id]=action.destination
-        //     return newState
+        case CREATE:
+            newState = Object.assign({}, state);
+            newState.newDestination = action.newDestination;
+            return newState;
         default:
             return state;
     }

@@ -9,7 +9,7 @@ def loadAllDestinations():
     destinations=Destination.query.all()
     return {"destinations": [destination.to_dict() for destination in destinations]}
 
-@destination_routes.route('/', methods=["POST"])
+@destination_routes.route('/create', methods=["POST"])
 def createDestination():
     form = DestinationForm()
     form['csrf_token'].data = request.cookies['csrf_token']

@@ -32,7 +32,7 @@ const LoginForm = () => {
 
   return (
     <div>
-      <form onSubmit={onLogin}>
+      <form onSubmit={onLogin} style={{textAlign:"right"}}>
         <div>
           {errors.map((error) => (
             <div>{error}</div>

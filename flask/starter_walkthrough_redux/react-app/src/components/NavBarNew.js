@@ -14,7 +14,7 @@ const navigation = [
     name: 'Destinations',
     current: false,
     children: [
-      { name: 'Lodgings', href: '/destinations' },
+      { name: 'Create Destination', href: '/destinations/create' },
       { name: 'Museums', href: '/destinations' },
       { name: 'Restaurants', href: '/destinations/' },
       { name: 'Parks', href: '/destinations/' },
@@ -101,6 +101,7 @@ export default function NavBarNew() {
                             </a>
 
                         ))}
+
                         <div >{item.name==='Calendar' ? <Calendar />: null } </div>
                         </Disclosure.Panel>
                     </>
