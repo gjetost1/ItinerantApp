@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom'
 import { createDestination} from "../../store/destinations"
@@ -46,31 +46,31 @@ export default function CreateDestination() {
         <div style={{flexDirection: "column"}}>
             <form onSubmit={(e) => handleSubmit(e)} style={{marginLeft:"25%",color:"blue", backgroundColor:"orange", alignItems:"right", display: "flex", flexDirection:"column"}}>
                 <p>New Destination Form</p>
-                <label for="name">Name:</label>
+                <label htmlFor="name">Name:</label>
                 <input type="text" id="name" onChange={(e) => setName(e.target.value)} value={name}/>
 
-                <label for="owner">Owner:</label>
+                <label htmlFor="owner">Owner:</label>
                 <input type="text" id="owner" onChange={(e) => setOwnerId(e.target.value)} value={owner_id}/>
 
-                <label for="destinationType">Destination Type:</label>
+                <label htmlFor="destinationType">Destination Type:</label>
                 <input type="text" id="destinationType" onChange={(e) => setDestinationType(e.target.value)} value={destinationType}/>
 
-                <label for="city">City:</label>
+                <label htmlFor="city">City:</label>
                 <input type="text" id="city" onChange={(e) => setCity(e.target.value)} value={city}/>
 
-                <label for="state">State:</label>
+                <label htmlFor="state">State:</label>
                 <input type="text" id="state" onChange={(e) => setState(e.target.value)} value={state}/>
 
-                <label for="address">Address:</label>
+                <label htmlFor="address">Address:</label>
                 <input type="text" id="address" onChange={(e) => setAddress(e.target.value)} value={address}/>
 
-                <label for="lat">Latitude:</label>
+                <label htmlFor="lat">Latitude:</label>
                 <input type="text" id="lat" onChange={(e) => setLat(e.target.value)} value={lat}/>
 
-                <label for="lng">Longitude:</label>
+                <label htmlFor="lng">Longitude:</label>
                 <input type="text" id="lng" onChange={(e) => setLng(e.target.value)} value={lng}/>
 
-                <label for="description">Description:</label>
+                <label htmlFor="description">Description:</label>
                 <textarea id="description" onChange={(e) => setDescription(e.target.value)} value={description} />
 
                 <button type="submit">Submit</button>
