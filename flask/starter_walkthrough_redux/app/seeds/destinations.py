@@ -8,6 +8,6 @@ def seed_destinations():
 
     db.session.commit()
 
-def undo_securities():
+def undo_destinations():
     db.session.execute('TRUNCATE posts RESTART IDENTITY CASCADE;')
     db.session.commit()
