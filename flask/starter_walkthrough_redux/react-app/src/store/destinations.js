@@ -34,11 +34,11 @@ export const getAllDestinations = () => async (dispatch) => {
     }
 }
 
-export const createDestination = (destination) => async (dispatch) => {
+export const createDestination = (data) => async (dispatch) => {
     const res = await fetch(`/api/destinations/create`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(destination)
+        body: JSON.stringify(data)
 
     });
     if(res.ok){
