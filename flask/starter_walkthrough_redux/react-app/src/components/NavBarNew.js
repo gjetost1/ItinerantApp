@@ -1,8 +1,11 @@
 import { Disclosure } from '@headlessui/react';
+import { useSelector } from 'react-redux';
 import React from 'react';
 import logo from './itinerantlogo.png'
 import CalendarTest from './Calendar';
 import Calendar from 'react-calendar';
+import LogoutButton from './auth/LogoutButton';
+import LoginForm from './auth/LoginForm';
 
 
 const navigation = [
@@ -32,6 +35,7 @@ function classNames(...classes) {
 }
 
 export default function NavBarNew() {
+  const user = useSelector((state) => state.session.user);
   return (
       <div className="h-full">
 
@@ -106,7 +110,11 @@ export default function NavBarNew() {
                 )}
             </nav>
         </div>
+        {!user && (<LoginForm/>)}
+        {user && (<LogoutButton/>)}
+
         </div>
     </div>
+
   )
 }
