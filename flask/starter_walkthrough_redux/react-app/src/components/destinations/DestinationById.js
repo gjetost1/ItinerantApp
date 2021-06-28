@@ -33,21 +33,21 @@ export default function DestinationById(){
     }
 
     const handleEdit = async () => {
-        await dispatch(editDestination(destinations.id))
-        history.push('/')
+        await dispatch(editDestination(destinations))
+        // history.push('/destinations/create')
     }
 
     return (
 
-        <div style={{textAlign:"right"}}> Destination Info
-            <div className='border'>
+        <div style={{textAlign:"right", margin:"5px"}}> Destination Info
+            <div className='border' style={{ margin:"5px"}}>
                <br></br>
-                <p>Destination Name: {destinations.name}</p>
-                <p>Type: {destinations.destinationType}</p>
-                <p>City: {destinations.city}</p>
-                <p>State: {destinations.state}</p>
-                <p>Address: {destinations.address}</p>
-                <p>Description: {destinations.description}</p>
+                <p style={{textAlign:"right", margin:"5px"}}>Destination Name: {destinations.name}</p>
+                <p style={{textAlign:"right", margin:"5px"}}>Type: {destinations.destinationType}</p>
+                <p style={{textAlign:"right", margin:"5px"}}>City: {destinations.city}</p>
+                <p style={{textAlign:"right", margin:"5px"}}>State: {destinations.state}</p>
+                <p style={{textAlign:"right", margin:"5px"}}>Address: {destinations.address}</p>
+                <p style={{textAlign:"right", margin:"5px"}}>Description: {destinations.description}</p>
                 {user.id===destinations.owner_id?
                 <button onClick={handleDelete}>delete</button>:null
                 }

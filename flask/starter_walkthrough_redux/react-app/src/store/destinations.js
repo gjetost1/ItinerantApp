@@ -58,19 +58,24 @@ export const createDestination = (data) => async (dispatch) => {
     }
 };
 
-export const editDestination = (data, destinationId) => async (dispatch) => {
-
-    const res = await fetch(`/api/destinations/${destinationId}/`, {
+export const editDestination = (destinations) => async (dispatch) => {
+    let destinationId=destinations.id
+    console.log(destinationId,"id")
+    let body = JSON.stringify(destinations)
+    console.log(body,"body")
+    const data = await fetch(`/api/destinations/${destinationId}/`, {
         method: 'PATCH',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(data)
+        body: body
 
 
     });
-    if (res.ok) {
-        const destination = await res.json();
-        dispatch(edit(destination));
-        return destination;
+    console.log(data,"data")
+    if (data.ok) {
+        data = await data.json();
+
+        dispatch(edit(destinations));
+        return destinations;
     };
 };
 
