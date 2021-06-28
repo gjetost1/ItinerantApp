@@ -14,6 +14,13 @@ def loadSingleDestination(id):
     destination=Destination.query.filter_by(id=id).first()
     return destination.to_dict()
 
+@destination_routes.route('/<int:id>/',methods=["DELETE"])
+def deleteSingleDestination(id):
+    destination=Destination.query.filter_by(id=id).first()
+    db.session.delete(destination)
+    db.session.commit()
+    return "Deleted", 200
+
 @destination_routes.route('/create', methods=["POST"])
 def createDestination():
     form = DestinationForm()
