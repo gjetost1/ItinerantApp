@@ -58,6 +58,22 @@ export const createDestination = (data) => async (dispatch) => {
     }
 };
 
+export const editDestination = (data, destinationId) => async (dispatch) => {
+
+    const res = await fetch(`/api/destinations/${destinationId}/`, {
+        method: 'PATCH',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data)
+
+
+    });
+    if (res.ok) {
+        const destination = await res.json();
+        dispatch(edit(destination));
+        return destination;
+    };
+};
+
 export const deleteDestination = (destinationId) => async (dispatch) => {
     const res = await fetch(`/api/destinations/${destinationId}/`, {
         method: 'DELETE'
@@ -75,6 +91,10 @@ export default function destinationReducer(state={}, action){
             newState.destinations = action.destinations;
             return action.destinations
         case CREATE:
+            newState = Object.assign({}, state);
+            newState.newDestination = action.newDestination;
+            return newState;
+        case EDIT:
             newState = Object.assign({}, state);
             newState.newDestination = action.newDestination;
             return newState;

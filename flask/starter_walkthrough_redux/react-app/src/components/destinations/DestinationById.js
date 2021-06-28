@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
-import { getDestinationById, deleteDestination} from '../../store/destinations'
+import { getDestinationById, deleteDestination, editDestination} from '../../store/destinations'
 
 
 
@@ -32,6 +32,11 @@ export default function DestinationById(){
         history.push('/')
     }
 
+    const handleEdit = async () => {
+        await dispatch(editDestination(destinations.id))
+        history.push('/')
+    }
+
     return (
 
         <div style={{textAlign:"right"}}> Destination Info
@@ -44,8 +49,10 @@ export default function DestinationById(){
                 <p>Address: {destinations.address}</p>
                 <p>Description: {destinations.description}</p>
                 {user.id===destinations.owner_id?
-
                 <button onClick={handleDelete}>delete</button>:null
+                }
+                 {user.id===destinations.owner_id?
+                <button style={{margin:"10px"}} onClick={handleEdit}>edit</button>:null
                 }
             </div>
         </div>
