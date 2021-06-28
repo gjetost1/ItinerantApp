@@ -16,7 +16,7 @@ export default function Destinations() {
         return (
            <div style={{textAlign:"right", margin: "5px" }}>All Destinations
             <p>____</p>
-            {destinations.map(destination => <li>{destination.name}</li> )}
+            {destinations.map(destination => <li><button onClick={e => {window.location=`/destinations/${destination.id}`}}> {destination.name} </button></li>)}
            </div>
 
         )

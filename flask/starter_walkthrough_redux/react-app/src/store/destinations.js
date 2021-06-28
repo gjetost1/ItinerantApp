@@ -34,6 +34,16 @@ export const getAllDestinations = () => async (dispatch) => {
     }
 }
 
+export const getDestinationById = (destinationId) => async (dispatch) => {
+    const res = await fetch(`/api/destinations/${destinationId}`);
+
+    if (res.ok) {
+        const destination = await res.json();
+        dispatch(load(destination));
+        return destination;
+    };
+};
+
 export const createDestination = (data) => async (dispatch) => {
     const res = await fetch(`/api/destinations/create`, {
         method: 'POST',
@@ -48,6 +58,15 @@ export const createDestination = (data) => async (dispatch) => {
     }
 };
 
+export const deleteDestination = (destinationId) => async (dispatch) => {
+    const res = await fetch(`/api/destination/delete/${destinationId}`, {
+        method: 'DELETE'
+    })
+    const data = await res.json()
+    dispatch(deleter(destinationId))
+    return res;
+}
+
 export default function destinationReducer(state={}, action){
     let newState;
     switch(action.type){
@@ -58,6 +77,10 @@ export default function destinationReducer(state={}, action){
         case CREATE:
             newState = Object.assign({}, state);
             newState.newDestination = action.newDestination;
+            return newState;
+        case DELETE:
+            newState = Object.assign({}, state);
+            newState.destinations = [];
             return newState;
         default:
             return state;
