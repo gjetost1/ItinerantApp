@@ -9,7 +9,7 @@ import LoginForm from './auth/LoginForm';
 
 
 const navigation = [
-  { name: 'Dashboard', href: '/', current: true },
+  { name: 'My Map', href: '/', current: true },
   {
     name: 'Destinations',
     current: false,

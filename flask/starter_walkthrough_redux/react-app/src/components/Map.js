@@ -12,6 +12,7 @@ import { useHistory } from "react-router";
 import { useDispatch, useSelector } from 'react-redux';
 
 import {NavLink} from 'react-router-dom'
+import { getAllDestinations } from "../store/destinations";
 
 
 const libraries = ["places"]
@@ -21,7 +22,7 @@ const mapContainerStyle = {
 };
 
 const center = {
-    lat: 44.9778,
+    lat: 40.9778,
     lng: -93.2650
 }
 
@@ -31,6 +32,30 @@ const options = {
 
 
 function Map() {
+ //dynamic gen
+    const dispatch = useDispatch();
+
+    useEffect(()=>{
+        dispatch(getAllDestinations())
+    }, [dispatch])
+
+    const destinations = useSelector(state => state.destinations.destinations)
+
+    const handleClick = (destination) => {
+     //more keys can be added
+        setSelected({
+            "id": destination.id,
+            "lat": destination.lat,
+            "lng": destination.lng,
+            "name": destination.name,
+            "destinationType": destination.destinationType,
+            "city": destination.city,
+            "state": destination.state,
+            "address": destination.street,
+            "description": destination.description,
+
+        })
+    };
 
     const {isLoaded, loadError} = useLoadScript({
         googleMapsApiKey: 'AIzaSyDZhB_aGyFMu_-gQbJsCU7Objjh3WtBcD4',
@@ -71,56 +96,55 @@ function Map() {
         >
                 {/* dynamic gen */}
 
-                {/* {venues?.map(venue => (
+                {destinations?.map(destination => (
 
                 <Marker
-                    key={venue.id}
-                    position={{ lat: parseInt(venue.lat), lng: parseInt(venue.lng)}}
+                    key={destination.id}
+                    position={{ lat: parseInt(destination.lat), lng: parseInt(destination.lng)}}
 
                     icon={{
-                        url: '/pick.svg',
+                        url: '/icon.svg',
                         scaledSize: new window.google.maps.Size(20,20),
                         labelOrigin: new window.google.maps.Point(30,30),
                         origin: new window.google.maps.Point(0,0),
                         anchor: new window.google.maps.Point(30,10)
                     }}
-                    // animation={window.google.maps.Animation.DROP}
+                    animation={window.google.maps.Animation.DROP}
                     clickable={true}
-                    onClick={() => handleClick(venue)}
+                    onClick={() => handleClick(destination)}
 
 
 
-                >{selected && selected.id===venue.id ? (<InfoWindow position={{lat: selected.lat, lng: selected.lng}} onCloseClick={()=>{
+                >{selected && selected.id===destination.id ? (<InfoWindow position={{lat: parseInt(selected.lat), lng: parseInt(selected.lng)}} onCloseClick={()=>{
                     setSelected(null);
                 }}>
-                    <div id="venue_container" className= "venue_container">
-                        <h2>Venue Info</h2>
+                    <div id="destination_container" className= "destination_container">
+                        <h2>Destination Info</h2>
                         <ul>
-                            <li>Name: {selected.name}</li>
-                            <li> Capacity: {selected.capacity}</li>
-                            <li>Venue Type: {selected.venueType}</li>
-                            <li>Venue Pay: ${selected.pay}</li>
-                            <li>City: {selected.city}</li>
-                            <li>State: {selected.state}</li>
-                            <li>Street: {selected.street}</li>
-                            <li>Description: {selected.description}</li>
-                            <li>Rating: {selected.rating}</li>
+                        <li style={{textAlign:"right", margin:"5px"}}>Destination Name: {destination.name}</li>
+                        <li style={{textAlign:"right", margin:"5px"}}>Type: {destination.destinationType}</li>
+                        <li style={{textAlign:"right", margin:"5px"}}>City: {destination.city}</li>
+                        <li style={{textAlign:"right", margin:"5px"}}>State: {destination.state}</li>
+                        <li style={{textAlign:"right", margin:"5px"}}>Address: {destination.address}</li>
+                        <li style={{textAlign:"right", margin:"5px"}}>Description: {destination.description}</li>
+                        <li style={{textAlign:"right", margin:"5px"}}>Lat: {destination.lat}</li>
+                        <li style={{textAlign:"right", margin:"5px"}}>Lat: {destination.lng}</li>
 
 
                         </ul>
-                        <NavLink to={`/venues/edit/${venue.id}`}>
+                        <NavLink to={`/destinations/edit/${destination.id}`}>
                              <button>Edit</button>
                         </NavLink>
-                        <NavLink to={`/venues/${venue.id}`}>
+                        <NavLink to={`/destinations/${destination.id}`}>
                              <button>Delete</button>
                         </NavLink>
 
                     </div>
                 </InfoWindow>) : null}</Marker>
-            ))} */}
+            ))}
 
             {/* click gen */}
-            {markers.map(marker => (
+            {/* {markers.map(marker => (
                 <Marker
                     key={marker.time.toISOString()}
                     position={{lat: marker.lat, lng: marker.lng}}
@@ -142,7 +166,7 @@ function Map() {
                     <h2>Destination</h2>
                     <p>Created {selected.name}</p>
                 </div>
-            </InfoWindow>) : null}
+            </InfoWindow>) : null} */}
         </GoogleMap>
 
 
