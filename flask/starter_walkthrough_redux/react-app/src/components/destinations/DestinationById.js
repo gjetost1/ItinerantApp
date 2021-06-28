@@ -29,7 +29,7 @@ export default function DestinationById(){
 
      const handleDelete = async () => {
         await dispatch(deleteDestination(destinations.id))
-        history.push('/')
+        window.location=('/destinations')
     }
 
     const handleEdit = async () => {

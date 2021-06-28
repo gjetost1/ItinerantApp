@@ -25,7 +25,7 @@ const edit = (destinations)=>({
 
 
 export const getAllDestinations = () => async (dispatch) => {
-    const res= await fetch('/api/destinations/')
+    const res= await fetch('/api/destinations')
 
     if (res.ok){
         const destinations = await res.json()
@@ -35,7 +35,7 @@ export const getAllDestinations = () => async (dispatch) => {
 }
 
 export const getDestinationById = (destinationId) => async (dispatch) => {
-    const res = await fetch(`/api/destinations/${destinationId}/`);
+    const res = await fetch(`/api/destinations/${destinationId}`);
 
     if (res.ok) {
         const destinations = await res.json();
@@ -45,7 +45,7 @@ export const getDestinationById = (destinationId) => async (dispatch) => {
 };
 
 export const createDestination = (data) => async (dispatch) => {
-    const res = await fetch(`/api/destinations/create/`, {
+    const res = await fetch(`/api/destinations/create`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(data)
@@ -83,7 +83,7 @@ export const deleteDestination = (destinationId) => async (dispatch) => {
     const res = await fetch(`/api/destinations/${destinationId}/`, {
         method: 'DELETE'
     })
-    const data = await res.json()
+
     dispatch(deleter(destinationId))
     return res;
 }
