@@ -16,9 +16,10 @@ export default function DestinationById(){
     dispatch(getDestinationById(id))
     }, [dispatch, id])
 
-    const destinations = useSelector(state => state.destinations.destinations)
+    const destinations = useSelector((state )=> state.destinations)
 
     const user = useSelector(state => state.session.user)
+
 
     if (!destinations || !user) {
         return (

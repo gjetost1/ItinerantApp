@@ -57,11 +57,11 @@ function App() {
         <ProtectedRoute path="/destinations" exact={true} >
           <Destinations/>
         </ProtectedRoute>
-        <ProtectedRoute path="/destinations/:id" exact={true} >
-          <DestinationById/>
-        </ProtectedRoute>
         <ProtectedRoute path="/destinations/create" exact={true} >
           <CreateDestination/>
+        </ProtectedRoute>
+        <ProtectedRoute path="/destinations/:id" exact={true} >
+          <DestinationById/>
         </ProtectedRoute>
         <ProtectedRoute path="/calendar" exact={true} >
           <CalendarTest/>

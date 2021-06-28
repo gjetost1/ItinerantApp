@@ -38,9 +38,9 @@ export const getDestinationById = (destinationId) => async (dispatch) => {
     const res = await fetch(`/api/destinations/${destinationId}`);
 
     if (res.ok) {
-        const destination = await res.json();
-        dispatch(load(destination));
-        return destination;
+        const destinations = await res.json();
+        dispatch(load(destinations));
+        return destinations;
     };
 };
 
