@@ -39,21 +39,21 @@ def createDestination():
     db.session.commit()
     return destination.to_dict()
 
-@destination_routes.route('/edit', methods=["PATCH"])
-def editDestination(body):
-    destination=Destination.query.filter_by(id=id).first()
-    form = DestinationForm()
-    destination = Destination(
-        name=form.data['name'],
-        owner_id=form.data['owner_id'],
-        destinationType=form.data['destinationType'],
-        city=form.data['city'],
-        state=form.data['state'],
-        address=form.data['address'],
-        lat=form.data['lat'],
-        lng=form.data['lng'],
-        description=form.data['description'],
-    )
+# @destination_routes.route('/edit', methods=["PATCH"])
+# def editDestination(body):
+#     destination=Destination.query.filter_by(id=id).first()
+#     form = DestinationForm()
+#     destination = Destination(
+#         name=form.data['name'],
+#         owner_id=form.data['owner_id'],
+#         destinationType=form.data['destinationType'],
+#         city=form.data['city'],
+#         state=form.data['state'],
+#         address=form.data['address'],
+#         lat=form.data['lat'],
+#         lng=form.data['lng'],
+#         description=form.data['description'],
+#     )
 
-    db.session.commit()
-    return destination.to_dict()
+#     db.session.commit()
+#     return destination.to_dict()
