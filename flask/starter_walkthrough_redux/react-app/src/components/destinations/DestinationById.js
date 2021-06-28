@@ -22,7 +22,7 @@ export default function DestinationById(){
 
     if (!destinations || !user) {
         return (
-        <div>no destination?</div>
+        <div style={{textAlign:"right"}}>no destination?</div>
         )
     }
 
@@ -33,7 +33,7 @@ export default function DestinationById(){
 
     return (
 
-        <div> Destination Info
+        <div style={{textAlign:"right"}}> Destination Info
             <div className='border'>
                <br></br>
                 <p>Destination Name: {destinations.name}</p>
