@@ -22,10 +22,10 @@ function UsersList() {
   });
 
   return (
-    <>
-      <h1>User List: </h1>
+    <div style={{textAlign:"right"}}>
+      <h1 >User List: </h1>
       <ul>{userComponents}</ul>
-    </>
+    </div>
   );
 }
 

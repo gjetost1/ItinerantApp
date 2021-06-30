@@ -13,6 +13,7 @@ import Map from "./components/Map"
 import Calendar from "react-calendar";
 import CalendarTest from "./components/Calendar";
 import Destinations from "./components/destinations/Destinations";
+import CreateDestination from "./components/destinations/CreateDestination";
 
 function App() {
   // const [authenticated, setAuthenticated] = useState(false);
@@ -38,9 +39,10 @@ function App() {
       <Switch>
         <Route path="/login" exact={true}>
           <LoginForm />
+          <SignUpForm />
         </Route>
         <Route path="/sign-up" exact={true}>
-          <SignUpForm />
+
         </Route>
         <ProtectedRoute path="/users" exact={true}>
           <UsersList/>
@@ -53,6 +55,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path="/destinations" exact={true} >
           <Destinations/>
+        </ProtectedRoute>
+        <ProtectedRoute path="/destinations/create" exact={true} >
+          <CreateDestination/>
         </ProtectedRoute>
         <ProtectedRoute path="/calendar" exact={true} >
           <CalendarTest/>

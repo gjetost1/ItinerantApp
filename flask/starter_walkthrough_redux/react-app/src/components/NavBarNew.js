@@ -1,8 +1,11 @@
 import { Disclosure } from '@headlessui/react';
+import { useSelector } from 'react-redux';
 import React from 'react';
 import logo from './itinerantlogo.png'
 import CalendarTest from './Calendar';
 import Calendar from 'react-calendar';
+import LogoutButton from './auth/LogoutButton';
+import LoginForm from './auth/LoginForm';
 
 
 const navigation = [
@@ -11,7 +14,7 @@ const navigation = [
     name: 'Destinations',
     current: false,
     children: [
-      { name: 'Lodgings', href: '/destinations' },
+      { name: 'Create Destination', href: '/destinations/create' },
       { name: 'Museums', href: '/destinations' },
       { name: 'Restaurants', href: '/destinations/' },
       { name: 'Parks', href: '/destinations/' },
@@ -32,6 +35,7 @@ function classNames(...classes) {
 }
 
 export default function NavBarNew() {
+  const user = useSelector((state) => state.session.user);
   return (
       <div className="h-full">
 
@@ -97,6 +101,7 @@ export default function NavBarNew() {
                             </a>
 
                         ))}
+
                         <div >{item.name==='Calendar' ? <Calendar />: null } </div>
                         </Disclosure.Panel>
                     </>
@@ -106,7 +111,11 @@ export default function NavBarNew() {
                 )}
             </nav>
         </div>
+        {!user && (<LoginForm/>)}
+        {user && (<LogoutButton/>)}
+
         </div>
     </div>
+
   )
 }
