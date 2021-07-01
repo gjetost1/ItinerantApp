@@ -25,7 +25,7 @@ const edit = (destinations)=>({
 
 
 export const getAllDestinations = () => async (dispatch) => {
-    const res= await fetch('/api/destinations/')
+    const res= await fetch('/api/destinations')
 
     if (res.ok){
         const destinations = await res.json()
@@ -33,6 +33,16 @@ export const getAllDestinations = () => async (dispatch) => {
         return destinations
     }
 }
+
+export const getDestinationById = (destinationId) => async (dispatch) => {
+    const res = await fetch(`/api/destinations/${destinationId}`);
+
+    if (res.ok) {
+        const destinations = await res.json();
+        dispatch(load(destinations));
+        return destinations;
+    };
+};
 
 export const createDestination = (data) => async (dispatch) => {
     const res = await fetch(`/api/destinations/create`, {
@@ -48,6 +58,36 @@ export const createDestination = (data) => async (dispatch) => {
     }
 };
 
+export const editDestination = (destinations) => async (dispatch) => {
+    let destinationId=destinations.id
+    console.log(destinationId,"id")
+    let body = JSON.stringify(destinations)
+    console.log(body,"body")
+    const data = await fetch(`/api/destinations/${destinationId}/`, {
+        method: 'PATCH',
+        headers: {'Content-Type': 'application/json'},
+        body: body
+
+
+    });
+    console.log(data,"data")
+    if (data.ok) {
+        data = await data.json();
+
+        dispatch(edit(destinations));
+        return destinations;
+    };
+};
+
+export const deleteDestination = (destinationId) => async (dispatch) => {
+    const res = await fetch(`/api/destinations/${destinationId}/`, {
+        method: 'DELETE'
+    })
+
+    dispatch(deleter(destinationId))
+    return res;
+}
+
 export default function destinationReducer(state={}, action){
     let newState;
     switch(action.type){
@@ -58,6 +98,14 @@ export default function destinationReducer(state={}, action){
         case CREATE:
             newState = Object.assign({}, state);
             newState.newDestination = action.newDestination;
+            return newState;
+        case EDIT:
+            newState = Object.assign({}, state);
+            newState.newDestination = action.newDestination;
+            return newState;
+        case DELETE:
+            newState = Object.assign({}, state);
+            newState.destinations = [];
             return newState;
         default:
             return state;

@@ -38,10 +38,10 @@ export default function CreateDestination() {
 
     async function handleSubmit(e){
         e.preventDefault();
-    //    let createdDestination =
+       let createdDestination =
       dispatch(createDestination(data))
 
-        // history.push(`/destinations/${createdDestination.destination.id}`)
+        history.push(`/destinations/`)
     }
     return (
         <div style={{flexDirection: "column"}}>

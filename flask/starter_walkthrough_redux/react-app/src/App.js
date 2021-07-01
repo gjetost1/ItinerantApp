@@ -14,6 +14,7 @@ import Calendar from "react-calendar";
 import CalendarTest from "./components/Calendar";
 import Destinations from "./components/destinations/Destinations";
 import CreateDestination from "./components/destinations/CreateDestination";
+import DestinationById from "./components/destinations/DestinationById";
 
 function App() {
   // const [authenticated, setAuthenticated] = useState(false);
@@ -58,6 +59,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path="/destinations/create" exact={true} >
           <CreateDestination/>
+        </ProtectedRoute>
+        <ProtectedRoute path="/destinations/:id" exact={true} >
+          <DestinationById/>
         </ProtectedRoute>
         <ProtectedRoute path="/calendar" exact={true} >
           <CalendarTest/>
