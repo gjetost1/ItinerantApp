@@ -22,7 +22,7 @@ const mapContainerStyle = {
 };
 
 const center = {
-    lat: 40.9778,
+    lat: 44.9778,
     lng: -93.2650
 }
 
@@ -42,7 +42,7 @@ function Map() {
     const destinations = useSelector(state => state.destinations.destinations)
 
     const handleClick = (destination) => {
-     //more keys can be added
+
         setSelected({
             "id": destination.id,
             "lat": destination.lat,
@@ -100,7 +100,7 @@ function Map() {
 
                 <Marker
                     key={destination.id}
-                    position={{ lat: parseInt(destination.lat), lng: parseInt(destination.lng)}}
+                    position={{ lat: parseFloat(destination.lat), lng: parseFloat(destination.lng)}}
 
                     icon={{
                         url: '/icon.svg',
@@ -111,11 +111,9 @@ function Map() {
                     }}
                     animation={window.google.maps.Animation.DROP}
                     clickable={true}
-                    onClick={() => handleClick(destination)}
+                    onClick={() => handleClick(destination)}>
 
-
-
-                >{selected && selected.id===destination.id ? (<InfoWindow position={{lat: parseInt(selected.lat), lng: parseInt(selected.lng)}} onCloseClick={()=>{
+                {selected && selected.id===destination.id ? (<InfoWindow position={{lat: parseFloat(selected.lat), lng: parseFloat(selected.lng)}} onCloseClick={()=>{
                     setSelected(null);
                 }}>
                     <div id="destination_container" className= "destination_container">

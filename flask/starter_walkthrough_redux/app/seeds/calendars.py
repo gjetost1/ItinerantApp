@@ -9,5 +9,5 @@ def seed_calendars():
     db.session.commit()
 
 def undo_calendars():
-    db.session.execute('TRUNCATE posts RESTART IDENTITY CASCADE;')
+    db.session.execute('TRUNCATE calendars RESTART IDENTITY CASCADE;')
     db.session.commit()
