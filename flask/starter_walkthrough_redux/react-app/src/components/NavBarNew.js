@@ -14,7 +14,7 @@ const navigation = [
     name: 'Destinations',
     current: false,
     children: [
-      { name: 'Create Destination', href: '/destinations/create' },
+      { name: 'Create Destination', href: '/slider' },
       { name: 'All Destinations', href: '/destinations' },
       // { name: 'Restaurants', href: '/destinations/' },
       // { name: 'Parks', href: '/destinations/' },

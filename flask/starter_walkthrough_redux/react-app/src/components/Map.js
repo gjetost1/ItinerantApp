@@ -8,11 +8,12 @@ import {
 
 import mapStyles from "./mapStyles"
 
-import { useHistory } from "react-router";
+
 import { useDispatch, useSelector } from 'react-redux';
 
 import {NavLink} from 'react-router-dom'
 import { getAllDestinations } from "../store/destinations";
+// import CreateDestination from "./destinations/CreateDestination";
 
 
 const libraries = ["places"]
@@ -92,8 +93,8 @@ function Map() {
             options = {options}
             onClick={onMapClick}
             onLoad={onMapLoad}
-
         >
+
                 {/* dynamic gen */}
 
                 {destinations?.map(destination => (
@@ -109,24 +110,24 @@ function Map() {
                         origin: new window.google.maps.Point(0,0),
                         anchor: new window.google.maps.Point(30,10)
                     }}
-                    animation={window.google.maps.Animation.DROP}
+                    // animation={window.google.maps.Animation.DROP}
                     clickable={true}
                     onClick={() => handleClick(destination)}>
 
                 {selected && selected.id===destination.id ? (<InfoWindow position={{lat: parseFloat(selected.lat), lng: parseFloat(selected.lng)}} onCloseClick={()=>{
                     setSelected(null);
                 }}>
-                    <div id="destination_container" className= "destination_container">
-                        <h2>Destination Info</h2>
-                        <ul>
-                        <li style={{textAlign:"right", margin:"5px"}}>Destination Name: {destination.name}</li>
-                        <li style={{textAlign:"right", margin:"5px"}}>Type: {destination.destinationType}</li>
-                        <li style={{textAlign:"right", margin:"5px"}}>City: {destination.city}</li>
-                        <li style={{textAlign:"right", margin:"5px"}}>State: {destination.state}</li>
-                        <li style={{textAlign:"right", margin:"5px"}}>Address: {destination.address}</li>
-                        <li style={{textAlign:"right", margin:"5px"}}>Description: {destination.description}</li>
-                        <li style={{textAlign:"right", margin:"5px"}}>Lat: {destination.lat}</li>
-                        <li style={{textAlign:"right", margin:"5px"}}>Lat: {destination.lng}</li>
+                    <div id="destination_container" className= "destination_container" style={{ textAlign:"center"}}>
+
+                        <ul style={{ textAlign:"center"}}>
+                        <li style={{textAlign:"center", margin:"5px"}}>{destination.name}</li>
+                        {/* <li style={{textAlign:"center", margin:"5px"}}>Type: {destination.destinationType}</li> */}
+                        <li style={{textAlign:"center", margin:"5px"}}>{destination.city}</li>
+                        <li style={{textAlign:"center", margin:"5px"}}>{destination.state}</li>
+                        <li style={{textAlign:"center", margin:"5px"}}>{destination.address}</li>
+                        <li style={{textAlign:"center", margin:"5px"}}>{destination.description}</li>
+                        {/* <li style={{textAlign:"center", margin:"5px"}}>Lat: {destination.lat}</li>
+                        <li style={{textAlign:"center", margin:"5px"}}>Lat: {destination.lng}</li> */}
 
 
                         </ul>
@@ -139,6 +140,8 @@ function Map() {
 
                     </div>
                 </InfoWindow>) : null}</Marker>
+
+
             ))}
 
             {/* click gen */}
@@ -161,11 +164,12 @@ function Map() {
                 setSelected(null);
             }}>
                 <div>
-                    <h2>Destination</h2>
-                    <p>Created {selected.name}</p>
+                   <CreateDestination lat={selected.lat}/>
+
                 </div>
             </InfoWindow>) : null} */}
         </GoogleMap>
+
 
 
         </div>)
