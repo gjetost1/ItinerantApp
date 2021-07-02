@@ -3,15 +3,19 @@ import { useDispatch, useSelector } from "react-redux";
 import {getAllCalendars} from '../store/calendars';
 
 export default function Calendar() {
-    const calendars=useSelector((state)=>state.calendars)
-    console.log(calendars)
+    const calendars=useSelector((state)=>state.calendars.calendars)
+
     const dispatch=useDispatch()
     useEffect(()=>{
         dispatch(getAllCalendars())
     },[dispatch])
 
     return (
-            <div style={{textAlign:"center"}}>hi{calendars}</div>
+            <div style={{textAlign:"center"}}>hi
+            {calendars && <div> {calendars.map(calendar => <li><button onClick={e => {window.location=`/calendars/${calendar.id}`}}> {calendar.notes} </button></li>)} </div>}
+
+            {/* {calendars.map(calendar => <li><button onClick={e => {window.location=`/calendars/${calendar.id}`}}> {calendar.name} </button></li>)} */}
+            </div>
     // <div className="ml-auto w-5/6 h-5/6 flex justify-start">
     //     <div className="ml-auto w-5/6 h-5/6 py-20 px-6">
     //         <div className=" ml-auto w-5/6 flex items-center justify-between">

@@ -2,10 +2,12 @@ import {createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import session from "./session"
 import destinationReducer from "./destinations"
+import calendarReducer from "./calendars";
 
 const rootReducer = combineReducers({
     session,
-    destinations: destinationReducer
+    destinations: destinationReducer,
+    calendars: calendarReducer
 });
 
 
