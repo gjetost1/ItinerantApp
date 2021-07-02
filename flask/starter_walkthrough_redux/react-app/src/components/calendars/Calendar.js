@@ -12,7 +12,7 @@ export default function CalendarTest() {
 
     return (
             <div style={{textAlign:"center"}}>
-            {calendars && <div> {calendars.map(calendar => <li><button onClick={e => {window.location=`/calendars/${calendar.id}`}}> {calendar.notes} </button></li>)} </div>}
+            {calendars && <div> {calendars.map(calendar => <li><button onClick={e => {window.location=`/calendar/${calendar.id}`}}> {calendar.notes} </button></li>)} </div>}
 
 
             </div>
