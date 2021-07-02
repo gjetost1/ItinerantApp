@@ -16,7 +16,8 @@ import Destinations from "./components/destinations/Destinations";
 import CreateDestination from "./components/destinations/CreateDestination";
 import DestinationById from "./components/destinations/DestinationById";
 import EditDestination from "./components/destinations/EditDestination"
-import Slider from "./components/Slider";
+import CreateDestinationSlider from "./components/destinations/CreateDestinationSlider";
+import EditDestinationSlider from "./components/destinations/EditDestinationSlider";
 
 function App() {
   // const [authenticated, setAuthenticated] = useState(false);
@@ -66,14 +67,15 @@ function App() {
           <DestinationById/>
         </ProtectedRoute>
         <ProtectedRoute path="/destinations/:id/edit" exact={true} >
-          <EditDestination/>
+          <DestinationById/>
+          <EditDestinationSlider/>
         </ProtectedRoute>
         <ProtectedRoute path="/calendar" exact={true} >
           <CalendarTest/>
         </ProtectedRoute>
         <ProtectedRoute path="/slider" exact={true} >
           <Map/>
-          <Slider/>
+          <CreateDestinationSlider/>
         </ProtectedRoute>
       </Switch>
 

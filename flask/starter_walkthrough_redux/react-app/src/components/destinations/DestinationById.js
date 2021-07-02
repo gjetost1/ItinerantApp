@@ -32,24 +32,24 @@ export default function DestinationById(){
         window.location=('/destinations')
     }
 
-    const handleEdit = async () => {
-        await dispatch(editDestination(destinations))
-        // history.push('/destinations/create')
+    const handleEdit = () => {
+
+        history.push(`/destinations/${destinations.id}/edit`)
     }
 
     return (
 
-        <div style={{textAlign:"right", margin:"5px"}}> Destination Info
+        <div style={{textAlign:"left", marginLeft:"26%"}}> Destination Info
             <div className='border' style={{ margin:"5px"}}>
                <br></br>
-                <p style={{textAlign:"right", margin:"5px"}}>Destination Name: {destinations.name}</p>
-                <p style={{textAlign:"right", margin:"5px"}}>Type: {destinations.destinationType}</p>
-                <p style={{textAlign:"right", margin:"5px"}}>City: {destinations.city}</p>
-                <p style={{textAlign:"right", margin:"5px"}}>State: {destinations.state}</p>
-                <p style={{textAlign:"right", margin:"5px"}}>Address: {destinations.address}</p>
-                <p style={{textAlign:"right", margin:"5px"}}>Description: {destinations.description}</p>
-                <p style={{textAlign:"right", margin:"5px"}}>lat: {destinations.lat}</p>
-                <p style={{textAlign:"right", margin:"5px"}}>lng: {destinations.lng}</p>
+                {/* <p style={{textAlign:"left", margin:"5px"}}>Type: {destinations.destinationType}</p> */}
+                <p style={{textAlign:"left", margin:"5px"}}>Destination Name: {destinations.name}</p>
+                <p style={{textAlign:"left", margin:"5px"}}>City: {destinations.city}</p>
+                <p style={{textAlign:"left", margin:"5px"}}>State: {destinations.state}</p>
+                <p style={{textAlign:"left", margin:"5px"}}>Address: {destinations.address}</p>
+                <p style={{textAlign:"left", margin:"5px"}}>Description: {destinations.description}</p>
+                <p style={{textAlign:"left", margin:"5px"}}>lat: {destinations.lat}</p>
+                <p style={{textAlign:"left", margin:"5px"}}>lng: {destinations.lng}</p>
                 {user.id===destinations.owner_id?
                 <button onClick={handleDelete}>delete</button>:null
                 }

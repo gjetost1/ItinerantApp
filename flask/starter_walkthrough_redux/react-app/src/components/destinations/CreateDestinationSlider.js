@@ -1,9 +1,9 @@
 import React, { Fragment, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { XIcon } from '@heroicons/react/outline'
-import CreateDestination from './destinations/CreateDestination'
+import CreateDestination from './CreateDestination'
 
-export default function Slider() {
+export default function CreateDestinationSlider() {
   const [open, setOpen] = useState(true)
 
   return (

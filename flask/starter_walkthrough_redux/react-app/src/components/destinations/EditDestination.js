@@ -58,7 +58,7 @@ export default function EditDestination() {
     return (
         <div style={{flexDirection: "column", textAlign:"center", marginLeft:"25%"}}>
             <form onSubmit={(e) => handleSubmit(e)} style={{ backgroundColor:"orange", alignItems:"right", display: "flex", flexDirection:"column"}}>
-                <p>New Destination Form</p>
+                <p>Edit Destination Form</p>
                 <label htmlFor="name">Name:</label>
                 <input type="text" id="name" onChange={(e) => setName(e.target.value)} value={name} placeholder={destinations.name}/>
 
