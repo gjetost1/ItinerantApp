@@ -60,22 +60,23 @@ function App() {
         <ProtectedRoute path="/destinations" exact={true} >
           <Destinations/>
         </ProtectedRoute>
-        <ProtectedRoute path="/destinations/create" exact={true} >
+        {/* <ProtectedRoute path="/destinations/create" exact={true} >
           <CreateDestination/>
+        </ProtectedRoute> */}
+        <ProtectedRoute path="/destinations/create" exact={true} >
+          <Map/>
+          <CreateDestinationSlider/>
         </ProtectedRoute>
         <ProtectedRoute path="/destinations/:id" exact={true} >
           <DestinationById/>
         </ProtectedRoute>
         <ProtectedRoute path="/destinations/:id/edit" exact={true} >
           <DestinationById/>
+          {/* <EditDestination/> */}
           <EditDestinationSlider/>
         </ProtectedRoute>
         <ProtectedRoute path="/calendar" exact={true} >
           <CalendarTest/>
-        </ProtectedRoute>
-        <ProtectedRoute path="/slider" exact={true} >
-          <Map/>
-          <CreateDestinationSlider/>
         </ProtectedRoute>
       </Switch>
 

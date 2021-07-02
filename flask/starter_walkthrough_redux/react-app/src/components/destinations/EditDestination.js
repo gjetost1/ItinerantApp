@@ -16,12 +16,14 @@ export default function EditDestination() {
         dispatch(getDestinationById(id))
     }, [dispatch, id])
 
-    const destinations = useSelector((state )=> state.destinations)
 
+    const destinations = useSelector((state )=> state?.destinations)
+
+    console.log(destinations.name)
 
     const user = useSelector(state => state.session.user)
 
-    const [name, setName] = useState('')
+    const [name, setName] = useState(destinations.name)
     const [owner_id, setOwnerId] = useState(1)
     const [destinationType, setDestinationType] = useState(1)
     const [city, setCity] = useState('')
@@ -31,6 +33,23 @@ export default function EditDestination() {
     const [lng, setLng] = useState('')
     const [description, setDescription] = useState('')
 
+
+    const InitVals = () => {
+        setName(destinations.name)
+        setOwnerId(destinations.owner_id)
+        setDestinationType(destinations.destinationType)
+        setCity(destinations.city)
+        setState(destinations.state)
+        setAddress(destinations.address)
+        setLat(destinations.lat)
+        setLng(destinations.lng)
+        setDescription(destinations.description)
+
+    }
+    useEffect(()=>{
+      InitVals()
+
+    }, [destinations])
 
     if(!user) return null
 
@@ -53,14 +72,13 @@ export default function EditDestination() {
        let createdDestination =
       dispatch(editDestination(data))
 
-        history.push(`/destinations/${destinations.id}`)
+        history.push(`/destinations/`)
     }
     return (
         <div style={{flexDirection: "column", textAlign:"center", marginLeft:"25%"}}>
             <form onSubmit={(e) => handleSubmit(e)} style={{ backgroundColor:"orange", alignItems:"right", display: "flex", flexDirection:"column"}}>
-                <p>Edit Destination Form</p>
                 <label htmlFor="name">Name:</label>
-                <input type="text" id="name" onChange={(e) => setName(e.target.value)} value={name} placeholder={destinations.name}/>
+                <input type="text" id="name" onChange={(e) => setName(e.target.value)} value={name}/>
 
                 <label htmlFor="owner">Owner:</label>
                 <input type="text" id="owner" onChange={(e) => setOwnerId(e.target.value)} value={owner_id} placeholder={destinations.owner_id}/>

@@ -14,7 +14,7 @@ def loadSingleDestination(id):
     destination=Destination.query.filter_by(id=id).first()
     return destination.to_dict()
 
-@destination_routes.route('/<int:id>/',methods=["DELETE"])
+@destination_routes.route('/<int:id>',methods=["DELETE"])
 def deleteSingleDestination(id):
     destination=Destination.query.filter_by(id=id).first()
     db.session.delete(destination)
@@ -39,7 +39,7 @@ def createDestination():
     db.session.commit()
     return destination.to_dict()
 
-@destination_routes.route('/<int:id>/', methods=["PUT"])
+@destination_routes.route('/<int:id>', methods=["PUT"])
 def editDestination(id):
     destination = Destination.query.get(request.json['id'])
 

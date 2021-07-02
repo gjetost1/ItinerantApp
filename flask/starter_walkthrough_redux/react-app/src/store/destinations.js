@@ -63,7 +63,7 @@ export const editDestination = (destinations) => async (dispatch) => {
     console.log(destinationId,"id")
     let body = JSON.stringify(destinations)
     console.log(body,"body")
-    const res = await fetch(`/api/destinations/${destinationId}/`, {
+    const res = await fetch(`/api/destinations/${destinationId}`, {
         method: 'PUT',
         headers: {'Content-Type': 'application/json'},
         body: body
