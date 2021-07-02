@@ -20,8 +20,8 @@ class Calendar(db.Model):
           "id": self.id,
           "user_id": self.user_id,
           "owner_id": self.owner_id,
-          "startTime": self.city,
-          "endTime": self.state,
-          "notes": self.address
+          "startTime": self.startTime,
+          "endTime": self.endTime,
+          "notes": self.notes
 
         }
