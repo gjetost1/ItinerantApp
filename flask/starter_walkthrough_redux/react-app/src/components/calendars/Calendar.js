@@ -1,12 +1,25 @@
-import React from "react";
+import React, {useEffect} from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {getAllCalendars} from '../../store/calendars';
 
-export default function Calendar() {
+export default function CalendarTest() {
+    const calendars=useSelector((state)=>state.calendars.calendars)
+
+    const dispatch=useDispatch()
+    useEffect(()=>{
+        dispatch(getAllCalendars())
+    },[dispatch])
+
     return (
+    <div style={{textAlign:"center"}}>
+            {calendars && <div> {calendars.map(calendar => <li><button onClick={e => {window.location=`/calendar/${calendar.id}`}}> {calendar.notes} </button></li>)} </div>}
+
+
     <div className="ml-auto w-5/6 h-5/6 flex justify-start">
         <div className="ml-auto w-5/6 h-5/6 py-20 px-6">
             <div className=" ml-auto w-5/6 flex items-center justify-between">
                 <div>
-                    <h4 className="text-xs xl:text-base text-gray-900 dark:text-gray-100">September 2018</h4>
+                    <h4 className="text-xs xl:text-base text-gray-900 dark:text-gray-100"></h4>
                 </div>
                 <div className="md:flex justify-center hidden w-1/2">
                     <div className="flex items-center">
@@ -216,5 +229,6 @@ export default function Calendar() {
         }`}
         </style>
     </div>
-);
+    </div>
+    );
 };

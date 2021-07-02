@@ -2,7 +2,7 @@ import { Disclosure } from '@headlessui/react';
 import { useSelector } from 'react-redux';
 import React from 'react';
 import logo from './itinerantlogo.png'
-import CalendarTest from './Calendar';
+
 import Calendar from 'react-calendar';
 import LogoutButton from './auth/LogoutButton';
 import LoginForm from './auth/LoginForm';
@@ -21,8 +21,9 @@ const navigation = [
   {
     name: 'Calendar',
     current: false,
-    children: [{ name: 'Full Calendar', href: '/calendar' },
-
+    children: [
+      { name: 'Create Event', href: '/calendar/create' },
+      { name: 'Full Calendar', href: '/calendar' },
     ],
   },
 
