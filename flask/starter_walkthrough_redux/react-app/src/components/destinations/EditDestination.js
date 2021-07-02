@@ -1,18 +1,29 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom'
-import { editDestination} from "../../store/destinations"
+import { useHistory, useParams } from 'react-router-dom'
+import { editDestination, getDestinationById} from "../../store/destinations"
 
 
 
-export default function CreateDestination() {
+export default function EditDestination() {
     const history = useHistory();
     const dispatch = useDispatch();
 
+    const { id } = useParams();
+
+    useEffect(()=>{
+        dispatch(getDestinationById(id))
+    }, [dispatch, id])
+
+    const destinations = useSelector((state )=> state.destinations)
+
+
+    const user = useSelector(state => state.session.user)
+
     const [name, setName] = useState('')
-    const [owner_id, setOwnerId] = useState(0)
-    const [destinationType, setDestinationType] = useState('')
+    const [owner_id, setOwnerId] = useState(1)
+    const [destinationType, setDestinationType] = useState(1)
     const [city, setCity] = useState('')
     const [state, setState] = useState('')
     const [address, setAddress] = useState('')
@@ -20,12 +31,12 @@ export default function CreateDestination() {
     const [lng, setLng] = useState('')
     const [description, setDescription] = useState('')
 
-    const user_id = useSelector(state => state.session.user)
-    if(!user_id) return null
+
+    if(!user) return null
 
 
     const data = {
-
+        id,
         name,
         owner_id,
         destinationType,
@@ -42,38 +53,38 @@ export default function CreateDestination() {
        let createdDestination =
       dispatch(editDestination(data))
 
-        history.push(`/destinations`)
+        history.push(`/destinations/${destinations.id}`)
     }
     return (
         <div style={{flexDirection: "column", textAlign:"center", marginLeft:"25%"}}>
             <form onSubmit={(e) => handleSubmit(e)} style={{ backgroundColor:"orange", alignItems:"right", display: "flex", flexDirection:"column"}}>
                 <p>New Destination Form</p>
                 <label htmlFor="name">Name:</label>
-                <input type="text" id="name" onChange={(e) => setName(e.target.value)} value={name}/>
+                <input type="text" id="name" onChange={(e) => setName(e.target.value)} value={name} placeholder={destinations.name}/>
 
                 <label htmlFor="owner">Owner:</label>
-                <input type="text" id="owner" onChange={(e) => setOwnerId(e.target.value)} value={owner_id}/>
+                <input type="text" id="owner" onChange={(e) => setOwnerId(e.target.value)} value={owner_id} placeholder={destinations.owner_id}/>
 
                 <label htmlFor="destinationType">Destination Type:</label>
-                <input type="text" id="destinationType" onChange={(e) => setDestinationType(e.target.value)} value={destinationType}/>
+                <input type="text" id="destinationType" onChange={(e) => setDestinationType(e.target.value)} value={destinationType} placeholder={destinations.destinationType}/>
 
                 <label htmlFor="city">City:</label>
-                <input type="text" id="city" onChange={(e) => setCity(e.target.value)} value={city}/>
+                <input type="text" id="city" onChange={(e) => setCity(e.target.value)} value={city} placeholder={destinations.city}/>
 
                 <label htmlFor="state">State:</label>
-                <input type="text" id="state" onChange={(e) => setState(e.target.value)} value={state}/>
+                <input type="text" id="state" onChange={(e) => setState(e.target.value)} value={state} placeholder={destinations.state}/>
 
                 <label htmlFor="address">Address:</label>
-                <input type="text" id="address" onChange={(e) => setAddress(e.target.value)} value={address}/>
+                <input type="text" id="address" onChange={(e) => setAddress(e.target.value)} value={address} placeholder={destinations.address}/>
 
                 <label htmlFor="lat">Latitude:</label>
-                <input type="text" id="lat" onChange={(e) => setLat(e.target.value)} value={lat}/>
+                <input type="text" id="lat" onChange={(e) => setLat(e.target.value)} value={lat} placeholder={destinations.lat}/>
 
                 <label htmlFor="lng">Longitude:</label>
-                <input type="text" id="lng" onChange={(e) => setLng(e.target.value)} value={lng}/>
+                <input type="text" id="lng" onChange={(e) => setLng(e.target.value)} value={lng} placeholder={destinations.lng}/>
 
                 <label htmlFor="description">Description:</label>
-                <textarea id="description" onChange={(e) => setDescription(e.target.value)} value={description} />
+                <textarea id="description" onChange={(e) => setDescription(e.target.value)} value={description} placeholder={destinations.description} />
 
                 <button type="submit">Submit</button>
 

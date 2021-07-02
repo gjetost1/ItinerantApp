@@ -67,10 +67,8 @@ export const editDestination = (destinations) => async (dispatch) => {
         method: 'PUT',
         headers: {'Content-Type': 'application/json'},
         body: body
-
-
     });
-    console.log(res,"res")
+
     if (res.ok) {
         const data = await res.json();
 
@@ -80,7 +78,7 @@ export const editDestination = (destinations) => async (dispatch) => {
 };
 
 export const deleteDestination = (destinationId) => async (dispatch) => {
-    const res = await fetch(`/api/destinations/${destinationId}/`, {
+    const res = await fetch(`/api/destinations/${destinationId}`, {
         method: 'DELETE'
     })
 

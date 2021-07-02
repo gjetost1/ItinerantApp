@@ -1,4 +1,4 @@
-from flask import Blueprint
+from flask import Blueprint, request
 from app.models import Destination, db
 from app.forms import DestinationForm
 
@@ -39,10 +39,11 @@ def createDestination():
     db.session.commit()
     return destination.to_dict()
 
-@destination_routes.route('/<int:id>', methods=["PUT"])
-def editDestination(body):
-    destination = Destination.query.get(request.json['owner_id'])
-    form = DestinationForm()
+@destination_routes.route('/<int:id>/', methods=["PUT"])
+def editDestination(id):
+    destination = Destination.query.get(request.json['id'])
+
+    destination.id=request.json['id']
     destination.name = request.json['name']
     destination.destinationType = request.json['destinationType']
     destination.city = request.json['city']
