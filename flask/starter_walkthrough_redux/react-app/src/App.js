@@ -11,13 +11,15 @@ import NavBarNew from "./components/NavBarNew";
 import { authenticate } from "./store/session";
 import Map from "./components/Map"
 import Calendar from "react-calendar";
-import CalendarTest from "./components/Calendar";
+import CalendarTest from "./components/calendars/Calendar";
 import Destinations from "./components/destinations/Destinations";
 import CreateDestination from "./components/destinations/CreateDestination";
 import DestinationById from "./components/destinations/DestinationById";
 import EditDestination from "./components/destinations/EditDestination"
 import CreateDestinationSlider from "./components/destinations/CreateDestinationSlider";
 import EditDestinationSlider from "./components/destinations/EditDestinationSlider";
+import CreateCalendar from "./components/calendars/CreateCalendar";
+import CreateCalendarSlider from "./components/calendars/CreateCalendarSlider"
 
 function App() {
   // const [authenticated, setAuthenticated] = useState(false);
@@ -77,6 +79,10 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path="/calendar" exact={true} >
           <CalendarTest/>
+        </ProtectedRoute>
+        <ProtectedRoute path="/calendar/create" exact={true} >
+          <Map/>
+          <CreateCalendarSlider/>
         </ProtectedRoute>
       </Switch>
 

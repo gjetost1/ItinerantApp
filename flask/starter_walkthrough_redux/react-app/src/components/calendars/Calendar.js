@@ -1,8 +1,8 @@
 import React, {useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {getAllCalendars} from '../store/calendars';
+import {getAllCalendars} from '../../store/calendars';
 
-export default function Calendar() {
+export default function CalendarTest() {
     const calendars=useSelector((state)=>state.calendars.calendars)
 
     const dispatch=useDispatch()
@@ -11,10 +11,10 @@ export default function Calendar() {
     },[dispatch])
 
     return (
-            <div style={{textAlign:"center"}}>hi
+            <div style={{textAlign:"center"}}>
             {calendars && <div> {calendars.map(calendar => <li><button onClick={e => {window.location=`/calendars/${calendar.id}`}}> {calendar.notes} </button></li>)} </div>}
 
-            {/* {calendars.map(calendar => <li><button onClick={e => {window.location=`/calendars/${calendar.id}`}}> {calendar.name} </button></li>)} */}
+
             </div>
     // <div className="ml-auto w-5/6 h-5/6 flex justify-start">
     //     <div className="ml-auto w-5/6 h-5/6 py-20 px-6">
