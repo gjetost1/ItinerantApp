@@ -36,7 +36,7 @@ export default function CreateCalendar() {
        let createdCalendar =
       dispatch(createCalendar(data))
 
-        history.push(`/calendars`)
+        history.push(`/calendar`)
     }
     return (
         <div style={{flexDirection: "column"}}>
