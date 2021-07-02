@@ -131,12 +131,10 @@ function Map() {
 
 
                         </ul>
-                        <NavLink to={`/destinations/edit/${destination.id}`}>
-                             <button>Edit</button>
-                        </NavLink>
                         <NavLink to={`/destinations/${destination.id}`}>
-                             <button>Delete</button>
+                             <button>Modify</button>
                         </NavLink>
+
 
                     </div>
                 </InfoWindow>) : null}</Marker>

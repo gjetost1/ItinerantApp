@@ -15,6 +15,7 @@ import CalendarTest from "./components/Calendar";
 import Destinations from "./components/destinations/Destinations";
 import CreateDestination from "./components/destinations/CreateDestination";
 import DestinationById from "./components/destinations/DestinationById";
+import EditDestination from "./components/destinations/EditDestination"
 import Slider from "./components/Slider";
 
 function App() {
@@ -63,6 +64,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path="/destinations/:id" exact={true} >
           <DestinationById/>
+        </ProtectedRoute>
+        <ProtectedRoute path="/destinations/:id/edit" exact={true} >
+          <EditDestination/>
         </ProtectedRoute>
         <ProtectedRoute path="/calendar" exact={true} >
           <CalendarTest/>

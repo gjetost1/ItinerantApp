@@ -63,18 +63,18 @@ export const editDestination = (destinations) => async (dispatch) => {
     console.log(destinationId,"id")
     let body = JSON.stringify(destinations)
     console.log(body,"body")
-    const data = await fetch(`/api/destinations/${destinationId}/`, {
-        method: 'PATCH',
+    const res = await fetch(`/api/destinations/${destinationId}/`, {
+        method: 'PUT',
         headers: {'Content-Type': 'application/json'},
         body: body
 
 
     });
-    console.log(data,"data")
-    if (data.ok) {
-        data = await data.json();
+    console.log(res,"res")
+    if (res.ok) {
+        const data = await res.json();
 
-        dispatch(edit(destinations));
+        dispatch(edit(data));
         return destinations;
     };
 };

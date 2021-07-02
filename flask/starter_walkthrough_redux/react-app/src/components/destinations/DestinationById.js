@@ -48,6 +48,8 @@ export default function DestinationById(){
                 <p style={{textAlign:"right", margin:"5px"}}>State: {destinations.state}</p>
                 <p style={{textAlign:"right", margin:"5px"}}>Address: {destinations.address}</p>
                 <p style={{textAlign:"right", margin:"5px"}}>Description: {destinations.description}</p>
+                <p style={{textAlign:"right", margin:"5px"}}>lat: {destinations.lat}</p>
+                <p style={{textAlign:"right", margin:"5px"}}>lng: {destinations.lng}</p>
                 {user.id===destinations.owner_id?
                 <button onClick={handleDelete}>delete</button>:null
                 }
