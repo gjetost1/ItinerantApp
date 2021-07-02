@@ -15,6 +15,9 @@ import CalendarTest from "./components/Calendar";
 import Destinations from "./components/destinations/Destinations";
 import CreateDestination from "./components/destinations/CreateDestination";
 import DestinationById from "./components/destinations/DestinationById";
+import EditDestination from "./components/destinations/EditDestination"
+import CreateDestinationSlider from "./components/destinations/CreateDestinationSlider";
+import EditDestinationSlider from "./components/destinations/EditDestinationSlider";
 
 function App() {
   // const [authenticated, setAuthenticated] = useState(false);
@@ -57,11 +60,20 @@ function App() {
         <ProtectedRoute path="/destinations" exact={true} >
           <Destinations/>
         </ProtectedRoute>
-        <ProtectedRoute path="/destinations/create" exact={true} >
+        {/* <ProtectedRoute path="/destinations/create" exact={true} >
           <CreateDestination/>
+        </ProtectedRoute> */}
+        <ProtectedRoute path="/destinations/create" exact={true} >
+          <Map/>
+          <CreateDestinationSlider/>
         </ProtectedRoute>
         <ProtectedRoute path="/destinations/:id" exact={true} >
           <DestinationById/>
+        </ProtectedRoute>
+        <ProtectedRoute path="/destinations/:id/edit" exact={true} >
+          <DestinationById/>
+          {/* <EditDestination/> */}
+          <EditDestinationSlider/>
         </ProtectedRoute>
         <ProtectedRoute path="/calendar" exact={true} >
           <CalendarTest/>

@@ -41,12 +41,12 @@ export default function CreateDestination() {
        let createdDestination =
       dispatch(createDestination(data))
 
-        history.push(`/destinations/`)
+        history.push(`/destinations`)
     }
     return (
         <div style={{flexDirection: "column"}}>
-            <form onSubmit={(e) => handleSubmit(e)} style={{marginLeft:"25%",color:"blue", backgroundColor:"orange", alignItems:"right", display: "flex", flexDirection:"column"}}>
-                <p>New Destination Form</p>
+            <form onSubmit={(e) => handleSubmit(e)} style={{ backgroundColor:"orange", alignItems:"right", display: "flex", flexDirection:"column"}}>
+
                 <label htmlFor="name">Name:</label>
                 <input type="text" id="name" onChange={(e) => setName(e.target.value)} value={name}/>
 
