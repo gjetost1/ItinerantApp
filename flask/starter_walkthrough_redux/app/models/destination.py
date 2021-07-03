@@ -12,8 +12,8 @@ class Destination(db.Model):
     city = db.Column(db.String(50), nullable=False)
     state = db.Column(db.String(50), nullable=False)
     address = db.Column(db.String(50), nullable=False)
-    lat = db.Column(db.String(17), nullable=False)
-    lng = db.Column(db.String(17), nullable=False)
+    lat = db.Column(db.String(25), nullable=False)
+    lng = db.Column(db.String(25), nullable=False)
     description = db.Column(db.String(999), nullable=False)
 
     users = db.relationship("User", back_populates="destinations")

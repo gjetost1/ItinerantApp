@@ -62,13 +62,13 @@ This is the backend for the Flask React project.
 4. Run
 
    ```bash
-   heroku login
+   sudo heroku login
    ```
 
 5. Login to the heroku container registry
 
    ```bash
-   heroku container:login
+   sudo heroku container:login
    ```
 
 6. Update the `REACT_APP_BASE_URL` variable in the Dockerfile.
@@ -77,20 +77,20 @@ This is the backend for the Flask React project.
    This will build the dockerfile and push the image to your heroku container registry
 
    ```bash
-   heroku container:push web -a {NAME_OF_HEROKU_APP}
+   sudo heroku container:push web -a i-tinerant
    ```
 
 8. Release your docker container to heroku
 
    ```bash
-   heroku container:release web -a {NAME_OF_HEROKU_APP}
+   sudo heroku container:release web -a i-tinerant
    ```
 
 9. set up your database:
 
    ```bash
-   heroku run -a {NAME_OF_HEROKU_APP} flask db upgrade
-   heroku run -a {NAME_OF_HEROKU_APP} flask seed all
+   sudo heroku run -a i-tinerant flask db upgrade
+   sudo heroku run -a i-tinerant flask seed all
    ```
 
 10. Under Settings find "Config Vars" and add any additional/secret .env variables.

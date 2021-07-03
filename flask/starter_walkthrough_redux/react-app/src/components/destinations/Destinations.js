@@ -16,7 +16,7 @@ export default function Destinations() {
         return (
            <div style={{textAlign:"left", marginLeft:'26%' }}>All Destinations
             <p>____</p>
-            {destinations.map(destination => <li><button onClick={e => {window.location=`/destinations/${destination.id}`}}> {destination.name} </button></li>)}
+            {destinations.map(destination => <li key={destination.id}><button onClick={e => {window.location=`/destinations/${destination.id}`}}> {destination.name} </button></li>)}
            </div>
 
         )

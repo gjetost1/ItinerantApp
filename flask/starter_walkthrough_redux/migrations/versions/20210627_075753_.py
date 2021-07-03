@@ -35,8 +35,8 @@ def upgrade():
     sa.Column('city', sa.String(length=50), nullable=False),
     sa.Column('state', sa.String(length=50), nullable=False),
     sa.Column('address', sa.String(length=50), nullable=False),
-    sa.Column('lat', sa.String(17), nullable=False),
-    sa.Column('lng', sa.String(17), nullable=False),
+    sa.Column('lat', sa.String(25), nullable=False),
+    sa.Column('lng', sa.String(25), nullable=False),
     sa.Column('description', sa.String(length=999), nullable=False),
     sa.PrimaryKeyConstraint('id')
     )

@@ -7,7 +7,7 @@ calendar_routes=Blueprint('calendars', __name__)
 @calendar_routes.route('/', methods=["GET"])
 def loadAllCalendars():
     calendars=Calendar.query.all()
-    return {"calendarss": [calendar.to_dict() for calendar in calendars]}
+    return {"calendars": [calendar.to_dict() for calendar in calendars]}
 
 @calendar_routes.route('/<int:id>/', methods=["GET"])
 def loadSingleCalendar(id):
@@ -48,4 +48,4 @@ def editCalendar(id):
     calendar.notes = request.json['notes']
 
     db.session.commit()
-    return destination.to_dict()
+    return calendar.to_dict()
