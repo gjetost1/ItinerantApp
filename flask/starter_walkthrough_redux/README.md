@@ -77,20 +77,20 @@ This is the backend for the Flask React project.
    This will build the dockerfile and push the image to your heroku container registry
 
    ```bash
-   sudo heroku container:push web -a itinerant-app
+   sudo heroku container:push web -a i-tinerant
    ```
 
 8. Release your docker container to heroku
 
    ```bash
-   sudo heroku container:release web -a itinerant-app
+   sudo heroku container:release web -a i-tinerant
    ```
 
 9. set up your database:
 
    ```bash
-   sudo heroku run -a itinerant-app flask db upgrade
-   sudo heroku run -a itinerant-app flask seed all
+   sudo heroku run -a i-tinerant flask db upgrade
+   sudo heroku run -a i-tinerant flask seed all
    ```
 
 10. Under Settings find "Config Vars" and add any additional/secret .env variables.

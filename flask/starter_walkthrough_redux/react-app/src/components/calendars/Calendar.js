@@ -12,7 +12,7 @@ export default function CalendarTest() {
 
     return (
     <div style={{textAlign:"center"}}>
-            {calendars && <div> {calendars.map(calendar => <li><button onClick={e => {window.location=`/calendar/${calendar.id}`}}> {calendar.notes} </button></li>)} </div>}
+            {calendars && <div> {calendars.map(calendar => <li key={calendar.id}><button onClick={e => {window.location=`/calendar/${calendar.id}`}}> {calendar.notes} </button></li>)} </div>}
 
 
     <div className="ml-auto w-5/6 h-5/6 flex justify-start">
@@ -34,17 +34,17 @@ export default function CalendarTest() {
                     </div>
                 </div>
                 <div>
-                    <a href="javascript:void(0)">
+                    <a href="#">
                         <h4 className="text-indigo-700 cursor-pointer text-xs lg:text-base font-light text-right">Month view</h4>
                     </a>
                 </div>
                 <div>
-                    <a href="javascript:void(0)">
+                    <a href="#">
                         <h4 className="text-xs lg:text-base cursor-pointer text-gray-700 dark:text-gray-200 font-light text-right ml-6">Week view</h4>
                     </a>
                 </div>
                 <div>
-                    <a href="javascript:void(0)">
+                    <a href="#">
                         <h4 className="text-xs lg:text-base cursor-pointer text-gray-700 dark:text-gray-200 font-light text-right ml-6">Day view</h4>
                     </a>
                 </div>
