@@ -25,7 +25,7 @@ const edit = (calendars)=>({
 
 
 export const getAllCalendars = () => async (dispatch) => {
-    const res= await fetch('/api/calendars')
+    const res= await fetch('/api/calendars/')
 
     if (res.ok){
         const calendars = await res.json()
@@ -60,9 +60,7 @@ export const createCalendar = (data) => async (dispatch) => {
 
 export const editCalendar = (calendars) => async (dispatch) => {
     let calendarId=calendars.id
-    console.log(calendarId,"id")
     let body = JSON.stringify(calendars)
-    console.log(body,"body")
     const res = await fetch(`/api/calendars/${calendarId}`, {
         method: 'PUT',
         headers: {'Content-Type': 'application/json'},
@@ -78,7 +76,7 @@ export const editCalendar = (calendars) => async (dispatch) => {
 };
 
 export const deleteCalendar = (calendarId) => async (dispatch) => {
-    const res = await fetch(`/api/calendars/${calendarId}`, {
+    const res = await fetch(`/api/calendars/${calendarId}/`, {
         method: 'DELETE'
     })
 
