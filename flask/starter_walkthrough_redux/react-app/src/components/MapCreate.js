@@ -32,7 +32,7 @@ const options = {
 }
 
 
-function Map() {
+function MapCreate() {
  //dynamic gen
     const dispatch = useDispatch();
 
@@ -80,6 +80,8 @@ function Map() {
         mapRef.current = map;
     },[])
 
+    // debug mode
+
 
     if (loadError) return "error loading maps"
     if (!isLoaded) return "loading maps"
@@ -97,12 +99,12 @@ function Map() {
 
                 {/* dynamic gen */}
 
-                {destinations?.map(destination => (
+                {/* {destinations?.map(destination => (
 
                 <Marker
                     key={destination.id}
                     position={{ lat: parseFloat(destination.lat), lng: parseFloat(destination.lng)}}
-
+                    anchor={null}
                     icon={{
                         url: 'https://maps.google.com/mapfiles/ms/micons/orange-dot.png',
                         scaledSize: new window.google.maps.Size(40,40),
@@ -110,9 +112,9 @@ function Map() {
                         origin: new window.google.maps.Point(0,0),
                         anchor: new window.google.maps.Point(30,10)
                     }}
-                    // animation={window.google.maps.Animation.DROP}
+                    animation={window.google.maps.Animation.DROP}
                     clickable={true}
-                    onClick={() => handleClick(destination)}>
+                    onClick={() => handleClick(destination) }>
 
                 {selected && selected.id===destination.id ? (<InfoWindow position={{lat: parseFloat(selected.lat), lng: parseFloat(selected.lng)}} onCloseClick={()=>{
                     setSelected(null);
@@ -121,13 +123,13 @@ function Map() {
 
                         <ul style={{ textAlign:"center"}}>
                         <li style={{textAlign:"center", margin:"5px"}}>{destination.name}</li>
-                        {/* <li style={{textAlign:"center", margin:"5px"}}>Type: {destination.destinationType}</li> */}
+                        <li style={{textAlign:"center", margin:"5px"}}>Type: {destination.destinationType}</li>
                         <li style={{textAlign:"center", margin:"5px"}}>{destination.city}</li>
                         <li style={{textAlign:"center", margin:"5px"}}>{destination.state}</li>
                         <li style={{textAlign:"center", margin:"5px"}}>{destination.address}</li>
                         <li style={{textAlign:"center", margin:"5px"}}>{destination.description}</li>
-                        {/* <li style={{textAlign:"center", margin:"5px"}}>Lat: {destination.lat}</li>
-                        <li style={{textAlign:"center", margin:"5px"}}>Lat: {destination.lng}</li> */}
+                        <li style={{textAlign:"center", margin:"5px"}}>Lat: {destination.lat}</li>
+                        <li style={{textAlign:"center", margin:"5px"}}>Lat: {destination.lng}</li>
 
 
                         </ul>
@@ -140,15 +142,16 @@ function Map() {
                 </InfoWindow>) : null}</Marker>
 
 
-            ))}
+            ))} */}
 
             {/* click gen */}
-            {/* {markers.map(marker => (
+            {markers.map(marker => (
                 <Marker
                     key={marker.time.toISOString()}
                     position={{lat: marker.lat, lng: marker.lng}}
+                    anchor={null}
                     icon ={{
-                        url: './icon.svg',
+                        url: 'https://maps.google.com/mapfiles/ms/micons/orange-dot.png',
                         scaledSize: new window.google.maps.Size(40,40),
                         origin: new window.google.maps.Point(0,0),
                         anchor: new window.google.maps.Point(10,10)
@@ -167,7 +170,7 @@ function Map() {
 
 
                 </div>
-            </InfoWindow>) : null} */}
+            </InfoWindow>) : null}
         </GoogleMap>
 
 
@@ -176,4 +179,4 @@ function Map() {
 
 }
 
-export default Map;
+export default MapCreate;

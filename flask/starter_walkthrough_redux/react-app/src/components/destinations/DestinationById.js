@@ -51,10 +51,10 @@ export default function DestinationById(){
                 <p style={{textAlign:"left", margin:"5px"}}>lat: {destinations.lat}</p>
                 <p style={{textAlign:"left", margin:"5px"}}>lng: {destinations.lng}</p>
                 {user.id===destinations.owner_id?
-                <button onClick={handleDelete}>delete</button>:null
+                <button  className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-yellow-500 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" onClick={handleDelete}>delete</button>:null
                 }
                  {user.id===destinations.owner_id?
-                <button style={{margin:"10px"}} onClick={handleEdit}>edit</button>:null
+                <button  className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-yellow-500 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" style={{margin:"10px"}} onClick={handleEdit}>edit</button>:null
                 }
             </div>
         </div>
