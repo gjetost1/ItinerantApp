@@ -104,7 +104,7 @@ function Map() {
                     position={{ lat: parseFloat(destination.lat), lng: parseFloat(destination.lng)}}
 
                     icon={{
-                        url: '/icon.svg',
+                        // url: '/icon.svg',
                         scaledSize: new window.google.maps.Size(40,40),
                         labelOrigin: new window.google.maps.Point(30,30),
                         origin: new window.google.maps.Point(0,0),
