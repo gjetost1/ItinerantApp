@@ -45,6 +45,7 @@ export default function NavBarNew() {
             className="w-auto"
             src={logo}
             alt="Itinerant"
+            onClick={()=>window.location=`/`}
             style={{height:"15vh", width:"25vw", zIndex:"100"}}
             />
         </div>

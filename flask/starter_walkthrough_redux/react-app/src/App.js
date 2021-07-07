@@ -24,6 +24,7 @@ import CalendarById from "./components/calendars/CalendarById";
 import EditCalendar from "./components/calendars/EditCalendar"
 import EditCalendarSlider from "./components/calendars/EditCalendarSlider";
 import MapCreate from "./components/MapCreate";
+import GoogleCalendar from "./components/calendars/GoogleCalendar";
 
 function App() {
   // const [authenticated, setAuthenticated] = useState(false);
@@ -80,6 +81,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path="/calendar" exact={true} >
           <CalendarTest/>
+        </ProtectedRoute>
+         <ProtectedRoute path="/googlecalendar" exact={true} >
+          <GoogleCalendar/>
         </ProtectedRoute>
         <ProtectedRoute path="/calendar/create" exact={true} >
           <CalendarTest/>
