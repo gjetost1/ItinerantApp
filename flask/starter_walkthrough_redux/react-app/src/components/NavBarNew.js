@@ -103,7 +103,13 @@ export default function NavBarNew() {
 
                         ))}
 
-                        <div style={{backgroundColor:"white"}} >{item.name==='Calendar' ? <Calendar />: null } </div>
+                        <div style={{backgroundColor:"white"}} >{item.name==='Calendar' ? <iframe
+           src="https://calendar.google.com/calendar/embed?src=jollygreengiantfood%40gmail.com&ctz=America%2FChicago"
+           style={{border:"0", width:"23vw", height:"20vh"}}
+           width="800"
+           height="600"
+           frameborder="0"
+           scrolling="no"></iframe>: null } </div>
                         </Disclosure.Panel>
                     </>
                     )}

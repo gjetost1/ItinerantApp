@@ -10,7 +10,7 @@ import User from "./components/User";
 import NavBarNew from "./components/NavBarNew";
 import { authenticate } from "./store/session";
 import Map from "./components/Map"
-import Calendar from "react-calendar";
+import Calendar from "./components/calendars/Calendar";
 import CalendarTest from "./components/calendars/Calendar";
 import Destinations from "./components/destinations/Destinations";
 import CreateDestination from "./components/destinations/CreateDestination";
@@ -25,6 +25,7 @@ import EditCalendar from "./components/calendars/EditCalendar"
 import EditCalendarSlider from "./components/calendars/EditCalendarSlider";
 import MapCreate from "./components/MapCreate";
 import GoogleCalendar from "./components/calendars/GoogleCalendar";
+
 
 function App() {
   // const [authenticated, setAuthenticated] = useState(false);
@@ -50,7 +51,7 @@ function App() {
         <Route path="/login" exact={true}>
         </Route>
         <Route path="/sign-up" exact={true}>
-        <SignUpForm/>
+          <SignUpForm/>
         </Route>
         <ProtectedRoute path="/users" exact={true}>
           <UsersList/>
@@ -80,14 +81,13 @@ function App() {
           <EditDestinationSlider/>
         </ProtectedRoute>
         <ProtectedRoute path="/calendar" exact={true} >
-          <CalendarTest/>
+          <Calendar/>
         </ProtectedRoute>
          <ProtectedRoute path="/googlecalendar" exact={true} >
           <GoogleCalendar/>
         </ProtectedRoute>
         <ProtectedRoute path="/calendar/create" exact={true} >
-          <CalendarTest/>
-          <CreateCalendarSlider/>
+          <GoogleCalendar/>
         </ProtectedRoute>
         <ProtectedRoute path="/calendar/:id" exact={true} >
           <CalendarById/>
