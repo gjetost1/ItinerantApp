@@ -36,7 +36,7 @@ function classNames(...classes) {
 export default function NavBarNew() {
   const user = useSelector((state) => state.session.user);
   return (
-      <div className="h-full">
+  <div className="h-full">
 
         <div className="w-1/4 h-full flex-col flex-grow border-r-100 pt-5 pb-4 overflow-y-auto overflow-x-hidden absolute z-10" style={{backgroundColor:"#f59e0b"}}>
         <div className="flex items-center flex-shrink-0 px-4">
@@ -111,8 +111,13 @@ export default function NavBarNew() {
                 )}
             </nav>
         </div>
+
+        <div style={{marginBottom:"auto"}}>
+
         {!user && (<LoginForm/>)}
+
         {user && (<LogoutButton/>)}
+        </div>
 
         </div>
     </div>
