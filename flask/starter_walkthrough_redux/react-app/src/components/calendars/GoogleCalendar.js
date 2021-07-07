@@ -2,7 +2,8 @@ import React, {useEffect, useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from 'react-router-dom'
 import { createCalendar} from "../../store/calendars"
-
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 export default function GoogleCalendar() {
 //form
@@ -105,13 +106,17 @@ export default function GoogleCalendar() {
         })
     }
 
+    let handleTime = (time) => {
+    return time.getHours() > 12 ? "text-success" : "text-error";
+    };
+
 
     return (
         <div style={{flexDirection:"row", zIndex:"10", marginTop:"auto", marginLeft:"25vw"}}>
 
             {/* create form for event */}
             <div style={{flexDirection: "column"}}>
-            <form onSubmit={(e) => handleSubmit(e)} style={{ backgroundColor:"orange", alignItems:"right", display: "flex", flexDirection:"column"}}>
+            <form onSubmit={(e) => handleSubmit(e)} style={{ backgroundColor:"orange", alignItems:"center", display: "flex", flexDirection:"column"}}>
 
                 <label htmlFor="name">user_id:</label>
                 <input type="text" id="user_id" onChange={(e) => setUserId(e.target.value)} value={user_id}/>
@@ -119,11 +124,27 @@ export default function GoogleCalendar() {
                 <label htmlFor="owner">Owner:</label>
                 <input type="text" id="owner_id" onChange={(e) => setOwnerId(e.target.value)} value={owner_id}/>
 
-                <label htmlFor="startTime">startTime:</label>
-                <input type="text" id="startTime" onChange={(e) => setStartTime(e.target.value)} value={startTime}/>
+                <label htmlFor="startTime">Start Time</label>
+                  <DatePicker
+                      value={startTime}
+                      selected={startTime}
+                      showTimeSelect
+                      dateFormat="Pp"
+                      onSelect={startTime=>{setStartTime(startTime)}} //when day is clicked
+                      onChange={(e) => setStartTime(startTime)} //only when value has changed
+                      timeClassName={handleTime}
+                    />
 
-                <label htmlFor="endTime">endTime:</label>
-                <input type="text" id="endTime" onChange={(e) => setEndTime(e.target.value)} value={endTime}/>
+                <label htmlFor="endTime">End Time</label>
+                  <DatePicker
+                    value={endTime}
+                    selected={endTime}
+                    showTimeSelect
+                    dateFormat="Pp"
+                    onSelect={endTime=>{setEndTime(endTime)}} //when day is clicked
+                    onChange={(e) => setEndTime(setStartTime)} //only when value has changed
+                    timeClassName={handleTime}
+                  />
 
                 <label htmlFor="notes">Notes:</label>
                 <input type="text" id="notes" onChange={(e) => setNotes(e.target.value)} value={notes}/>
