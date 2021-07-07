@@ -25,7 +25,7 @@ const edit = (destinations)=>({
 
 
 export const getAllDestinations = () => async (dispatch) => {
-    const res= await fetch('/api/destinations')
+    const res= await fetch('/api/destinations/')
 
     if (res.ok){
         const destinations = await res.json()
@@ -60,9 +60,7 @@ export const createDestination = (data) => async (dispatch) => {
 
 export const editDestination = (destinations) => async (dispatch) => {
     let destinationId=destinations.id
-    console.log(destinationId,"id")
     let body = JSON.stringify(destinations)
-    console.log(body,"body")
     const res = await fetch(`/api/destinations/${destinationId}`, {
         method: 'PUT',
         headers: {'Content-Type': 'application/json'},

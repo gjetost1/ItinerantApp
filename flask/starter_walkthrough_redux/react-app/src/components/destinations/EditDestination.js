@@ -19,8 +19,6 @@ export default function EditDestination() {
 
     const destinations = useSelector((state )=> state?.destinations)
 
-    console.log(destinations.name)
-
     const user = useSelector(state => state.session.user)
 
     const [name, setName] = useState(destinations.name)

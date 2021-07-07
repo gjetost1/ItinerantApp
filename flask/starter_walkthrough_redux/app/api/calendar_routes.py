@@ -9,7 +9,7 @@ def loadAllCalendars():
     calendars=Calendar.query.all()
     return {"calendars": [calendar.to_dict() for calendar in calendars]}
 
-@calendar_routes.route('/<int:id>/', methods=["GET"])
+@calendar_routes.route('/<int:id>', methods=["GET"])
 def loadSingleCalendar(id):
     calendar=Calendar.query.filter_by(id=id).first()
     return calendar.to_dict()

@@ -19,7 +19,6 @@ export default function EditDestination() {
 
     const calendars = useSelector((state )=> state?.calendars)
 
-    console.log(calendars.notes)
 
     const user = useSelector(state => state.session.user)
 

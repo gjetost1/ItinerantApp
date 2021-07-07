@@ -38,47 +38,48 @@ export default function NavBarNew() {
   return (
       <div className="h-full">
 
-        <div className=" w-1/4 h-full flex-col flex-grow border-r-100 border-gray-200 pt-5 pb-4 overflow-y-auto overflow-x-hidden bg-yellow-500 absolute z-10">
-        <div className="flex  items-center flex-shrink-0 px-4">
+        <div className="w-1/4 h-full flex-col flex-grow border-r-100 pt-5 pb-4 overflow-y-auto overflow-x-hidden absolute z-10" style={{backgroundColor:"#f59e0b"}}>
+        <div className="flex items-center flex-shrink-0 px-4">
+            <div className="w-auto h-auto font-medium rounded-full shadow-sm" style={{ fontSize:"5vh", color:"white", marginLeft:"1vw"}}></div>
             <img
-            className="h-8 w-auto"
+            className="w-auto"
             src={logo}
             alt="Itinerant"
+            style={{height:"15vh", width:"25vw", zIndex:"100"}}
             />
-            <h1>Itinerant</h1>
         </div>
         <div className="mt-5 flex-grow flex flex-col">
-            <nav className="flex-1 px-2 space-y-1 bg-white" aria-label="Sidebar">
+            <nav className="flex-1 px-2 space-y-1"  aria-label="Sidebar">
             {navigation.map((item) =>
                 !item.children ? (
                     <div key={item.name}>
-                    <a
+                    <a style={{backgroundColor:"#333333", color:"white", zIndex:100}}
                     href={item.href}
                     className={classNames(
                         item.current
-                        ? 'bg-gray-100 text-gray-900'
-                        : 'bg-white text-gray-600 hover:bg-gray-50 hover:text-gray-900',
-                        'group w-full flex items-center pl-7 pr-2 py-2 text-sm font-medium rounded-md'
+                        ? 'bg-gray-100 text-opacity-100 text-white z-100'
+                        : 'bg-white text-white text-opacity-100 hover:bg-gray-50 hover:text-black z-100',
+                        'group w-full flex items-center pl-7 pr-2 py-2 text-sm font-medium rounded-md z-100'
                         )}
                         >
                     {item.name}
                     </a>
                 </div>
                 ) : (
-                    <Disclosure as="div" key={item.name} className="space-y-1">
+                    <Disclosure as="div" key={item.name} className="space-y-1" style={{backgroundColor:"#333333"}}>
                     {({ open }) => (
                         <>
                         <Disclosure.Button
                         className={classNames(
                             item.current
-                            ? 'bg-gray-100 text-gray-900'
-                            : 'bg-white text-gray-600 hover:bg-gray-50 hover:text-gray-900',
+                            ? 'bg-gray-100 text-opacity-100 text-white'
+                            : 'bg-white text-opacity-100 text-black hover:bg-gray-50 hover:text-gray-900',
                             'group w-full flex items-center pr-2 py-2 text-left text-sm font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500'
                             )}
                             >
                         <svg
                             className={classNames(
-                                open ? 'text-gray-400 rotate-90' : 'text-gray-300',
+                                open ? 'text-white rotate-90' : 'text-white',
                                 'mr-2 flex-shrink-0 h-5 w-5 transform group-hover:text-gray-400 transition-colors ease-in-out duration-150'
                                 )}
                                 viewBox="0 0 20 20"
@@ -93,7 +94,7 @@ export default function NavBarNew() {
                             <a
                             key={subItem.name}
                             href={subItem.href}
-                            className="group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium text-gray-600 rounded-md hover:text-gray-900 hover:bg-gray-50"
+                            className="group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium text-white rounded-md hover:text-gray-900 hover:bg-gray-50"
 
                             >
                             {subItem.name}
@@ -101,7 +102,7 @@ export default function NavBarNew() {
 
                         ))}
 
-                        <div >{item.name==='Calendar' ? <Calendar />: null } </div>
+                        <div style={{backgroundColor:"white"}} >{item.name==='Calendar' ? <Calendar />: null } </div>
                         </Disclosure.Panel>
                     </>
                     )}

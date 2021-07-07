@@ -1,6 +1,14 @@
 import React, {useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {getAllCalendars} from '../../store/calendars';
+import Calendar from "@ericz1803/react-google-calendar";
+
+
+const API_KEY = "AIzaSyB6r_Q8r9S6TymFUd0XkvnTvsHCsKvWjNs";
+let calendars = [
+  {calendarId: "https://calendar.google.com/calendar/embed?src=jollygreengiantfood%40gmail.com&ctz=America%2FChicago"},
+
+];
 
 export default function CalendarTest() {
     const calendars=useSelector((state)=>state.calendars.calendars)
@@ -10,16 +18,23 @@ export default function CalendarTest() {
         dispatch(getAllCalendars())
     },[dispatch])
 
+
+
+
+
     return (
-    <div style={{textAlign:"center"}}>
-            {calendars && <div> {calendars.map(calendar => <li key={calendar.id}><button onClick={e => {window.location=`/calendar/${calendar.id}`}}> {calendar.notes} </button></li>)} </div>}
+    <div>
+            {calendars && <div style={{textAlign:"center"}}> {calendars.map(calendar => <li key={calendar.id}><button onClick={e => {window.location=`/calendar/${calendar.id}`}}> {calendar.notes} </button></li>)} </div>}
+            <div>
 
+            </div>
 
-    <div className="ml-auto w-5/6 h-5/6 flex justify-start">
-        <div className="ml-auto w-5/6 h-5/6 py-20 px-6">
-            <div className=" ml-auto w-5/6 flex items-center justify-between">
+            <div style={{float:"right", marginRight:"10vw"}}>
+                {/* tailwind calendar */}
+        <div className="w-full py-20 px-6">
+            <div className="w-full flex items-end justify-between">
                 <div>
-                    <h4 className="text-xs xl:text-base text-gray-900 dark:text-gray-100"></h4>
+                    <h4 className="text-xs xl:text-base text-gray-900 dark:text-gray-100">September 2018</h4>
                 </div>
                 <div className="md:flex justify-center hidden w-1/2">
                     <div className="flex items-center">
@@ -34,17 +49,17 @@ export default function CalendarTest() {
                     </div>
                 </div>
                 <div>
-                    <a href="#">
+                    <a href="javascript:void(0)">
                         <h4 className="text-indigo-700 cursor-pointer text-xs lg:text-base font-light text-right">Month view</h4>
                     </a>
                 </div>
                 <div>
-                    <a href="#">
+                    <a href="javascript:void(0)">
                         <h4 className="text-xs lg:text-base cursor-pointer text-gray-700 dark:text-gray-200 font-light text-right ml-6">Week view</h4>
                     </a>
                 </div>
                 <div>
-                    <a href="#">
+                    <a href="javascript:void(0)">
                         <h4 className="text-xs lg:text-base cursor-pointer text-gray-700 dark:text-gray-200 font-light text-right ml-6">Day view</h4>
                     </a>
                 </div>
@@ -108,8 +123,8 @@ export default function CalendarTest() {
                                 <p className="text-xs text-gray-800 dark:text-gray-100 pt-2 pl-2 pb-16">4</p>
                                 <div className="absolute w-64 xl:w-1/5 ml-3 -mt-16 flex items-center bg-gray-100 dark:bg-gray-800 border-l-4 border-indigo-700 rounded py-1">
                                     <div className="ml-1">
-                                        <p className="text-xs dark:text-gray-100 text-gray-900">4 Sept – 5 Sept</p>
-                                        <p className="text-xs text-gray-800 dark:text-gray-100 mt-0.5">Sleep under a beautiful waterfall, lulled by the roar.</p>
+                                        <p className="text-xs dark:text-gray-100 text-gray-900">4 Sept – 4 Sept</p>
+                                        <p className="text-xs text-gray-800 dark:text-gray-100 mt-0.5">Vacation</p>
                                     </div>
                                 </div>
                             </td>
@@ -122,7 +137,7 @@ export default function CalendarTest() {
                                     <div className="w-3 h-3 bg-indigo-700 rounded" />
                                     <div className="ml-2">
                                         <p className="text-xs dark:text-gray-100 text-gray-900">13:00 - 14:40</p>
-                                        <p className="text-xs text-gray-800 dark:text-gray-100 mt-1">TURTLE AUCTION WITH REPTILE TRAFFICKERS</p>
+                                        <p className="text-xs text-gray-800 dark:text-gray-100 mt-1">Doctor’s</p>
                                     </div>
                                 </div>
                             </td>
@@ -148,7 +163,7 @@ export default function CalendarTest() {
                                 <div className="absolute custom-width ml-3 -mt-16 flex items-center bg-gray-100 dark:bg-gray-800 border-l-4 border-indigo-700 rounded py-1">
                                     <div className="ml-1">
                                         <p className="text-xs dark:text-gray-100 text-gray-900">12 Sept – 15 Sept</p>
-                                        <p className="text-xs text-gray-800 dark:text-gray-100 mt-0.5">Short hitch along rails to Colorado</p>
+                                        <p className="text-xs text-gray-800 dark:text-gray-100 mt-0.5">Tokyo - Business Trip</p>
                                     </div>
                                 </div>
                             </td>
@@ -229,6 +244,7 @@ export default function CalendarTest() {
         }`}
         </style>
     </div>
+
     </div>
     );
 };
