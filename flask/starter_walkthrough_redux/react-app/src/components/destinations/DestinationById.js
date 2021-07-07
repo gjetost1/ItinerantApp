@@ -39,22 +39,22 @@ export default function DestinationById(){
 
     return (
 
-        <div className="font-medium rounded-full shadow-sm"  style={{textAlign:"left", marginLeft:"26%", fontSize:"5vh", color:"black"}}> Destination Info
-            <div className='border' style={{ margin:"5px"}}>
+        <div className="font-medium rounded-full shadow-sm text-white" style={{fontSize:"3vh",textAlign:"left", marginLeft:"26%", fontSize:"5vh"}}> Destination Info
+            <div className='border' >
                <br></br>
                 {/* <p style={{textAlign:"left", margin:"5px"}}>Type: {destinations.destinationType}</p> */}
-                <p style={{textAlign:"left", margin:"5px"}}>{destinations.name}</p>
-                <p style={{textAlign:"left", margin:"5px"}}>{destinations.city}</p>
-                <p style={{textAlign:"left", margin:"5px"}}>{destinations.state}</p>
-                <p style={{textAlign:"left", margin:"5px"}}>{destinations.address}</p>
-                <p style={{textAlign:"left", margin:"5px"}}>{destinations.description}</p>
-                <p style={{textAlign:"left", margin:"5px"}}>{destinations.lat}</p>
-                <p style={{textAlign:"left", margin:"5px"}}>{destinations.lng}</p>
+                <p className="text-white" style={{fontSize:"3vh", textAlign:"left", margin:"5px"}}>{destinations.name}</p>
+                <p className="text-white" style={{fontSize:"3vh", textAlign:"left", margin:"5px"}}>{destinations.city}</p>
+                <p className="text-white" style={{fontSize:"3vh", textAlign:"left", margin:"5px"}}>{destinations.state}</p>
+                <p className="text-white" style={{fontSize:"3vh", textAlign:"left", margin:"5px"}}>{destinations.address}</p>
+                <p className="text-white" style={{fontSize:"3vh", textAlign:"left", margin:"5px"}}>{destinations.description}</p>
+                {/* <p className="text-white" style={{fontSize:"3vh", textAlign:"left", margin:"5px"}}>{destinations.lat}</p>
+                <p className="text-white" style={{fontSize:"3vh", textAlign:"left", margin:"5px"}}>{destinations.lng}</p> */}
                 {user.id===destinations.owner_id?
-                <button  className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-yellow-500 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" onClick={handleDelete}>delete</button>:null
+                <button  className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-yellow-500 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" onClick={handleDelete}>Delete</button>:null
                 }
                  {user.id===destinations.owner_id?
-                <button  className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-yellow-500 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" style={{margin:"10px"}} onClick={handleEdit}>edit</button>:null
+                <button  className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-yellow-500 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" style={{margin:"10px"}} onClick={handleEdit}>Edit</button>:null
                 }
             </div>
         </div>

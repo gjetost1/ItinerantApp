@@ -46,7 +46,7 @@ export default function CreateDestination(latLng) {
         history.push(`/destinations`)
     }
     return (
-        <div style={{flexDirection: "column", backgroundColor:"#333333", width:"50vw", height:"55vh"}}>
+        <div style={{flexDirection: "column", backgroundColor:"#333333", width:"55vw", height:"55vh"}}>
             <form onSubmit={(e) => handleSubmit(e)} style={{ backgroundColor:"333333", alignItems:"right", display: "flex", flexDirection:"column"}}>
 
                 <label className="text-white" style={{fontSize:"3vh"}} htmlFor="name">Name:</label>
@@ -88,7 +88,7 @@ export default function CreateDestination(latLng) {
                 <label className="text-white" style={{fontSize:"3vh"}} htmlFor="description">Description:</label>
                 <textarea id="description" onChange={(e) => setDescription(e.target.value)} value={description} />
 
-                <button type="submit">Submit</button>
+                <button className="text-white" style={{fontSize:"3vh"}} type="submit">Submit</button>
 
             </form>
         </div>
