@@ -36,7 +36,7 @@ function classNames(...classes) {
 export default function NavBarNew() {
   const user = useSelector((state) => state.session.user);
   return (
-      <div className="h-full">
+  <div className="h-full">
 
         <div className="w-1/4 h-full flex-col flex-grow border-r-100 pt-5 pb-4 overflow-y-auto overflow-x-hidden absolute z-10" style={{backgroundColor:"#f59e0b"}}>
         <div className="flex items-center flex-shrink-0 px-4">
@@ -45,6 +45,7 @@ export default function NavBarNew() {
             className="w-auto"
             src={logo}
             alt="Itinerant"
+            onClick={()=>window.location=`/`}
             style={{height:"15vh", width:"25vw", zIndex:"100"}}
             />
         </div>
@@ -102,7 +103,13 @@ export default function NavBarNew() {
 
                         ))}
 
-                        <div style={{backgroundColor:"white"}} >{item.name==='Calendar' ? <Calendar />: null } </div>
+                        <div style={{backgroundColor:"white"}} >{item.name==='Calendar' ? <iframe
+           src="https://calendar.google.com/calendar/embed?src=jollygreengiantfood%40gmail.com&ctz=America%2FChicago"
+           style={{border:"0", width:"23vw", height:"20vh"}}
+           width="800"
+           height="600"
+           frameborder="0"
+           scrolling="no"></iframe>: null } </div>
                         </Disclosure.Panel>
                     </>
                     )}
@@ -111,8 +118,13 @@ export default function NavBarNew() {
                 )}
             </nav>
         </div>
+
+        <div style={{marginBottom:"auto"}}>
+
         {!user && (<LoginForm/>)}
+
         {user && (<LogoutButton/>)}
+        </div>
 
         </div>
     </div>

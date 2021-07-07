@@ -39,9 +39,9 @@ const SignUpForm = () => {
   }
 
   return (
-    <form onSubmit={onSignUp} style={{textAlign:"right"}}>
+    <form onSubmit={onSignUp} style={{textAlign:"center"}}>
       <div>
-        <label>User Name</label>
+        <label className="text-white" style={{fontSize:"3vh"}}>User Name</label>
         <input
           type="text"
           name="username"
@@ -50,7 +50,7 @@ const SignUpForm = () => {
         ></input>
       </div>
       <div>
-        <label>Email</label>
+        <label className="text-white" style={{fontSize:"3vh"}}>Email</label>
         <input
           type="text"
           name="email"
@@ -59,7 +59,7 @@ const SignUpForm = () => {
         ></input>
       </div>
       <div>
-        <label>Password</label>
+        <label className="text-white" style={{fontSize:"3vh"}}>Password</label>
         <input
           type="password"
           name="password"
@@ -68,7 +68,7 @@ const SignUpForm = () => {
         ></input>
       </div>
       <div>
-        <label>Repeat Password</label>
+        <label className="text-white" style={{fontSize:"3vh"}}>Repeat Password</label>
         <input
           type="password"
           name="repeat_password"
@@ -77,7 +77,7 @@ const SignUpForm = () => {
           required={true}
         ></input>
       </div>
-      <button type="submit">Sign Up</button>
+      <button className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-black bg-white hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" style={{fontSize:"3vh", marginTop:"1vh"}}  type="submit">Sign Up</button>
     </form>
   );
 };
