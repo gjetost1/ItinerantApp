@@ -38,14 +38,14 @@ export default function NavBarNew() {
   return (
       <div className="h-full">
 
-        <div className="w-1/4 h-full flex-col flex-grow border-r-100 pt-5 pb-4 overflow-y-auto overflow-x-hidden absolute z-10" style={{backgroundColor:"#f59e0b" }}>
+        <div className="w-1/4 h-full flex-col flex-grow border-r-100 pt-5 pb-4 overflow-y-auto overflow-x-hidden absolute z-10" style={{backgroundColor:"#f59e0b"}}>
         <div className="flex items-center flex-shrink-0 px-4">
             <div className="w-auto h-auto font-medium rounded-full shadow-sm" style={{ fontSize:"5vh", color:"white", marginLeft:"1vw"}}></div>
             <img
             className="w-auto"
             src={logo}
             alt="Itinerant"
-            style={{height:"15vh", width:"25vw"}}
+            style={{height:"15vh", width:"25vw", zIndex:"100"}}
             />
         </div>
         <div className="mt-5 flex-grow flex flex-col">
@@ -53,13 +53,13 @@ export default function NavBarNew() {
             {navigation.map((item) =>
                 !item.children ? (
                     <div key={item.name}>
-                    <a style={{backgroundColor:"#333333", color:"white"}}
+                    <a style={{backgroundColor:"#333333", color:"white", zIndex:100}}
                     href={item.href}
                     className={classNames(
                         item.current
-                        ? 'bg-gray-100 text-opacity-100 text-white'
-                        : 'bg-white text-white text-opacity-100 hover:bg-gray-50 hover:text-black',
-                        'group w-full flex items-center pl-7 pr-2 py-2 text-sm font-medium rounded-md'
+                        ? 'bg-gray-100 text-opacity-100 text-white z-100'
+                        : 'bg-white text-white text-opacity-100 hover:bg-gray-50 hover:text-black z-100',
+                        'group w-full flex items-center pl-7 pr-2 py-2 text-sm font-medium rounded-md z-100'
                         )}
                         >
                     {item.name}

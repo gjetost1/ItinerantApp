@@ -30,3 +30,17 @@ label {
     justify-content: center;
 
 }
+
+#overlay {
+    position:fixed;
+    left:550px;
+    top:100px;
+ }
+
+ #overlay img {
+    height:500px;
+ }
+
+ .grime{
+    pointer-events: none;
+ }
