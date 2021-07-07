@@ -24,17 +24,17 @@ export default function CalendarTest() {
 
     return (
     <div>
-            {calendars && <div style={{textAlign:"center"}}> {calendars.map(calendar => <li key={calendar.id}><button onClick={e => {window.location=`/calendar/${calendar.id}`}}> {calendar.notes} </button></li>)} </div>}
+            {calendars && <div className="font-medium rounded-full shadow-sm text-white" style={{fontSize:"3vh",textAlign:"center", marginLeft:"23%", fontSize:"5vh"}}> {calendars.map(calendar => <li key={calendar.id}><button onClick={e => {window.location=`/calendar/${calendar.id}`}}> {calendar.notes} </button></li>)} </div>}
             <div>
 
             </div>
 
-            <div style={{float:"right", marginRight:"10vw"}}>
+            <div style={{float:"right" }}>
                 {/* tailwind calendar */}
-        <div className="w-full py-20 px-6">
-            <div className="w-full flex items-end justify-between">
+        <div className="w-full px-6">
+            <div className="w-full h-3/4 flex items-end justify-between">
                 <div>
-                    <h4 className="text-xs xl:text-base text-gray-900 dark:text-gray-100">September 2018</h4>
+                    <h4 className="text-xs xl:text-base text-white dark:text-gray-100">July 2021</h4>
                 </div>
                 <div className="md:flex justify-center hidden w-1/2">
                     <div className="flex items-center">
@@ -50,17 +50,17 @@ export default function CalendarTest() {
                 </div>
                 <div>
                     <a href="javascript:void(0)">
-                        <h4 className="text-indigo-700 cursor-pointer text-xs lg:text-base font-light text-right">Month view</h4>
+                        <h4 className="text-white cursor-pointer text-xs lg:text-base font-light text-right">Month view</h4>
                     </a>
                 </div>
                 <div>
                     <a href="javascript:void(0)">
-                        <h4 className="text-xs lg:text-base cursor-pointer text-gray-700 dark:text-gray-200 font-light text-right ml-6">Week view</h4>
+                        <h4 className="text-xs lg:text-base cursor-pointer text-white dark:text-gray-200 font-light text-right ml-6">Week view</h4>
                     </a>
                 </div>
                 <div>
                     <a href="javascript:void(0)">
-                        <h4 className="text-xs lg:text-base cursor-pointer text-gray-700 dark:text-gray-200 font-light text-right ml-6">Day view</h4>
+                        <h4 className="text-xs lg:text-base cursor-pointer text-white dark:text-gray-200 font-light text-right ml-6">Day view</h4>
                     </a>
                 </div>
             </div>
@@ -230,7 +230,7 @@ export default function CalendarTest() {
                 </table>
             </div>
         </div>
-        <style>
+        {/* <style>
             {`
         @media screen and (min-width: 375px) {
             .custom-width {
@@ -242,7 +242,7 @@ export default function CalendarTest() {
                 width: 50%;
             }
         }`}
-        </style>
+        </style> */}
     </div>
 
     </div>

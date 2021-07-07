@@ -39,22 +39,21 @@ export default function CalendarById() {
 
     return (
 
-        <div style={{textAlign:"left", marginLeft:"26%"}}> Calendar Info
+        <div className="font-medium rounded-full shadow-sm text-white" style={{fontSize:"3vh",textAlign:"left", marginLeft:"26%", fontSize:"5vh"}}> Calendar Info
             <div className='border' style={{ margin:"5px"}}>
-               <br></br>
 
-                <p style={{textAlign:"left", margin:"5px"}}>id: {calendars.id}</p>
-                <p style={{textAlign:"left", margin:"5px"}}>user_id: {calendars.user_id}</p>
-                <p style={{textAlign:"left", margin:"5px"}}>owner_id: {calendars.owner_id}</p>
-                <p style={{textAlign:"left", margin:"5px"}}>startTime: {calendars.startTime}</p>
-                <p style={{textAlign:"left", margin:"5px"}}>endTime: {calendars.endTime}</p>
-                <p style={{textAlign:"left", margin:"5px"}}>notes: {calendars.notes}</p>
+                <p className="text-white" style={{fontSize:"3vh", textAlign:"left", margin:"5px"}}>id: {calendars.id}</p>
+                <p className="text-white" style={{fontSize:"3vh", textAlign:"left", margin:"5px"}}>user_id: {calendars.user_id}</p>
+                <p className="text-white" style={{fontSize:"3vh", textAlign:"left", margin:"5px"}}>owner_id: {calendars.owner_id}</p>
+                <p className="text-white" style={{fontSize:"3vh", textAlign:"left", margin:"5px"}}>startTime: {calendars.startTime}</p>
+                <p className="text-white" style={{fontSize:"3vh", textAlign:"left", margin:"5px"}}>endTime: {calendars.endTime}</p>
+                <p className="text-white" style={{fontSize:"3vh", textAlign:"left", margin:"5px"}}>notes: {calendars.notes}</p>
 
                 {user.id===calendars.user_id?
-                <button onClick={handleDelete}>delete</button>:null
+                <button className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-black bg-white hover:bg-yellow-500 hover:text-white  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black" onClick={handleDelete}>Delete</button>:null
                 }
                  {user.id===calendars.user_id?
-                <button style={{margin:"10px"}} onClick={handleEdit}>edit</button>:null
+                <button className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-black bg-white hover:bg-yellow-500 hover:text-white  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black" style={{margin:"10px"}} onClick={handleEdit}>Edit</button>:null
                 }
             </div>
         </div>
