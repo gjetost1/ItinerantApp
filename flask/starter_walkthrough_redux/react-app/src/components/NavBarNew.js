@@ -38,7 +38,7 @@ export default function NavBarNew() {
   return (
       <div className="h-full">
 
-        <div className=" w-1/4 h-full flex-col flex-grow border-r-100 border-gray-200 pt-5 pb-4 overflow-y-auto overflow-x-hidden bg-yellow-500 absolute z-10">
+        <div className="w-1/4 h-full flex-col flex-grow border-r-100 pt-5 pb-4 overflow-y-auto overflow-x-hidden absolute z-10" style={{backgroundColor:"#f59e0b" }}>
         <div className="flex items-center flex-shrink-0 px-4">
             <div className="w-auto h-auto font-medium rounded-full shadow-sm" style={{ fontSize:"5vh", color:"white", marginLeft:"1vw"}}></div>
             <img

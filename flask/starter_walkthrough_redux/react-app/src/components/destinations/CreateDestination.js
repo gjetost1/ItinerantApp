@@ -14,7 +14,7 @@ export default function CreateDestination(latLng) {
 
     const [name, setName] = useState('')
     const [owner_id, setOwnerId] = useState(user.id)
-    const [destinationType, setDestinationType] = useState('')
+    const [destinationType, setDestinationType] = useState('7')
     const [city, setCity] = useState('')
     const [state, setState] = useState('')
     const [address, setAddress] = useState('')
@@ -46,19 +46,19 @@ export default function CreateDestination(latLng) {
         history.push(`/destinations`)
     }
     return (
-        <div style={{flexDirection: "column"}}>
-            <form onSubmit={(e) => handleSubmit(e)} style={{ backgroundColor:"orange", alignItems:"right", display: "flex", flexDirection:"column"}}>
+        <div style={{flexDirection: "column", backgroundColor:"#333333", width:"50vw", height:"55vh"}}>
+            <form onSubmit={(e) => handleSubmit(e)} style={{ backgroundColor:"333333", alignItems:"right", display: "flex", flexDirection:"column"}}>
 
-                <label htmlFor="name">Name:</label>
+                <label className="text-white" style={{fontSize:"3vh"}} htmlFor="name">Name:</label>
                 <input type="text" id="name" onChange={(e) => setName([e.target.value])} value={name}/>
 
-                <label htmlFor="owner">Owner:</label>
+                <label className="text-white" style={{fontSize:"3vh"}} htmlFor="owner">Owner:</label>
                 <input type="text" id="owner" onChange={(e) => setOwnerId(user.id)} value={owner_id}/>
 
                 {/* <label htmlFor="destinationType">Destination Type:</label>
                 <input type="text" id="destinationType" onChange={(e) => setDestinationType(e.target.value)} value={destinationType}/> */}
 
-                <label htmlFor="destinationType">Destination Type:</label>
+                <label className="text-white" style={{fontSize:"3vh"}} htmlFor="destinationType">Destination Type:</label>
                 <select name="destinationType" id="destinationType" onChange={(e) => setDestinationType([e.target.value])} value={destinationType}>
                     <option value="1">Park</option>
                     <option value="2">Restaurant</option>
@@ -69,23 +69,23 @@ export default function CreateDestination(latLng) {
                     <option value="7">Destination</option>
                 </select>
 
-                <label htmlFor="city">City:</label>
+                <label className="text-white" style={{fontSize:"3vh"}} htmlFor="city">City:</label>
                 <input type="text" id="city" onChange={(e) => setCity(e.target.value)} value={city}/>
 
-                <label htmlFor="state">State:</label>
+                <label className="text-white" style={{fontSize:"3vh"}} htmlFor="state">State:</label>
                 <input type="text" id="state" onChange={(e) => setState(e.target.value)} value={state}/>
 
-                <label htmlFor="address">Address:</label>
+                <label className="text-white" style={{fontSize:"3vh"}} htmlFor="address">Address:</label>
                 <input type="text" id="address" onChange={(e) => setAddress(e.target.value)} value={address}/>
 
-                <label htmlFor="lat">Latitude:</label>
+                <label className="text-white" style={{fontSize:"3vh"}} htmlFor="lat">Latitude:</label>
                 <input type="text" id="lat" onChange={(e) => setLat(latLng.latX)} value={lat}/>
 
-                <label htmlFor="lng">Longitude:</label>
+                <label className="text-white" style={{fontSize:"3vh"}} htmlFor="lng">Longitude:</label>
                 <input type="text" id="lng" onChange={(e) => setLng(latLng.lngY)} value={lng}/>
 
 
-                <label htmlFor="description">Description:</label>
+                <label className="text-white" style={{fontSize:"3vh"}} htmlFor="description">Description:</label>
                 <textarea id="description" onChange={(e) => setDescription(e.target.value)} value={description} />
 
                 <button type="submit">Submit</button>
