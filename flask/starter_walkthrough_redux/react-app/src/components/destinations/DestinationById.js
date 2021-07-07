@@ -39,17 +39,17 @@ export default function DestinationById(){
 
     return (
 
-        <div style={{textAlign:"left", marginLeft:"26%"}}> Destination Info
+        <div className="font-medium rounded-full shadow-sm"  style={{textAlign:"left", marginLeft:"26%", fontSize:"5vh", color:"black"}}> Destination Info
             <div className='border' style={{ margin:"5px"}}>
                <br></br>
                 {/* <p style={{textAlign:"left", margin:"5px"}}>Type: {destinations.destinationType}</p> */}
-                <p style={{textAlign:"left", margin:"5px"}}>Destination Name: {destinations.name}</p>
-                <p style={{textAlign:"left", margin:"5px"}}>City: {destinations.city}</p>
-                <p style={{textAlign:"left", margin:"5px"}}>State: {destinations.state}</p>
-                <p style={{textAlign:"left", margin:"5px"}}>Address: {destinations.address}</p>
-                <p style={{textAlign:"left", margin:"5px"}}>Description: {destinations.description}</p>
-                <p style={{textAlign:"left", margin:"5px"}}>lat: {destinations.lat}</p>
-                <p style={{textAlign:"left", margin:"5px"}}>lng: {destinations.lng}</p>
+                <p style={{textAlign:"left", margin:"5px"}}>{destinations.name}</p>
+                <p style={{textAlign:"left", margin:"5px"}}>{destinations.city}</p>
+                <p style={{textAlign:"left", margin:"5px"}}>{destinations.state}</p>
+                <p style={{textAlign:"left", margin:"5px"}}>{destinations.address}</p>
+                <p style={{textAlign:"left", margin:"5px"}}>{destinations.description}</p>
+                <p style={{textAlign:"left", margin:"5px"}}>{destinations.lat}</p>
+                <p style={{textAlign:"left", margin:"5px"}}>{destinations.lng}</p>
                 {user.id===destinations.owner_id?
                 <button  className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-yellow-500 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" onClick={handleDelete}>delete</button>:null
                 }
