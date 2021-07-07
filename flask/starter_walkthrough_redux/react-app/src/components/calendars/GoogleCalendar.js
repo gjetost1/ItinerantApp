@@ -28,11 +28,11 @@ export default function GoogleCalendar() {
                 'location': '800 Howard St., San Francisco, CA 94103',
                 'description': 'A chance to hear more about Google\'s developer products.',
                 'start': {
-                  'dateTime': '2015-05-28T09:00:00-07:00',
+                  'dateTime': '2021-07-17T09:00:00-07:00',
                   'timeZone': 'America/Los_Angeles'
                 },
                 'end': {
-                  'dateTime': '2015-05-28T17:00:00-07:00',
+                  'dateTime': '2021-07-18T17:00:00-07:00',
                   'timeZone': 'America/Los_Angeles'
                 },
                 'recurrence': [
@@ -50,14 +50,21 @@ export default function GoogleCalendar() {
                   ]
                 }
               };
+            const request = gapi.client.calendar.events.insert({
+                "calendarId": "primary",
+                'resource': event,
+            })
 
+            request.execute(event => {
+                window.open(event.htmlLink)
+            })
         })
         })
     }
 
     return (
         <div>
-
+            {/* create form for event */}
             <button style={{margin:"1vh", width:"24vw", float:"right"}} className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-black bg-white hover:bg-gray-900 hover:text-yellow-500  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black" onClick={handleClick}>Add Event</button>
         </div>
     )
