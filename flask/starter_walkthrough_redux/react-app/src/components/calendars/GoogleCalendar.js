@@ -9,9 +9,9 @@ export default function GoogleCalendar() {
 //form
   const history = useHistory();
   const dispatch = useDispatch();
-  const user = useSelector(state => state.session.user)
+  const user = useSelector(state => state?.session.user)
   const [user_id, setUserId] = useState(user?.id)
-  const [owner_id, setOwnerId] = useState(0)
+  const [owner_id, setOwnerId] = useState(user?.id)
   const [startTime, setStartTime] = useState('')
   const [endTime, setEndTime] = useState('')
   const [notes, setNotes] = useState('')
@@ -87,7 +87,6 @@ export default function GoogleCalendar() {
             request.execute(event => {
               window.location=(`/calendar`)
                 window.open(event.htmlLink)
-
             })
 
             // get
@@ -116,15 +115,15 @@ export default function GoogleCalendar() {
 
             {/* create form for event */}
             <div style={{flexDirection: "column"}}>
-            <form onSubmit={(e) => handleSubmit(e)} style={{ backgroundColor:"orange", alignItems:"center", display: "flex", flexDirection:"column"}}>
+            <form onSubmit={(e) => handleSubmit(e)} style={{ backgroundColor:"#333333", alignItems:"center", display: "flex", flexDirection:"column"}}>
 
-                <label htmlFor="name">user_id:</label>
-                <input type="text" id="user_id" onChange={(e) => setUserId(e.target.value)} value={user_id}/>
+                <label htmlFor="name" className="text-white" style={{fontSize:"3vh"}}>User ID</label>
+                <input type="text" id="user_id" onChange={(e) => setUserId(user.id)} value={user_id}/>
 
-                <label htmlFor="owner">Owner:</label>
-                <input type="text" id="owner_id" onChange={(e) => setOwnerId(e.target.value)} value={owner_id}/>
+                <label htmlFor="owner" className="text-white" style={{fontSize:"3vh"}}>Owner</label>
+                <input type="text" id="owner_id" onChange={(e) => setOwnerId(user.id)} value={owner_id}/>
 
-                <label htmlFor="startTime">Start Time</label>
+                <label htmlFor="startTime" className="text-white" style={{fontSize:"3vh"}}>Start Time</label>
                   <DatePicker
                       value={startTime}
                       selected={startTime}
@@ -135,18 +134,18 @@ export default function GoogleCalendar() {
                       timeClassName={handleTime}
                     />
 
-                <label htmlFor="endTime">End Time</label>
+                <label htmlFor="endTime" className="text-white" style={{fontSize:"3vh"}}>End Time</label>
                   <DatePicker
                     value={endTime}
                     selected={endTime}
                     showTimeSelect
                     dateFormat="Pp"
                     onSelect={endTime=>{setEndTime(endTime)}} //when day is clicked
-                    onChange={(e) => setEndTime(setStartTime)} //only when value has changed
+                    onChange={(e) => setEndTime(endTime)} //only when value has changed
                     timeClassName={handleTime}
                   />
 
-                <label htmlFor="notes">Notes:</label>
+                <label htmlFor="notes" className="text-white" style={{fontSize:"3vh"}}>Notes</label>
                 <input type="text" id="notes" onChange={(e) => setNotes(e.target.value)} value={notes}/>
 
                 <button type="submit" style={{margin:"1vh", width:"12vw", float:"right"}} className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-black bg-white hover:bg-gray-900 hover:text-yellow-500  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black" onClick={handleClick}>Add Event</button>
