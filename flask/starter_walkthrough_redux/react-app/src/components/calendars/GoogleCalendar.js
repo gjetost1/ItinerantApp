@@ -101,6 +101,9 @@ export default function GoogleCalendar() {
               const events = response.result.items
               console.log("EVENTS: ", events)
             })
+
+            //modify
+            //delete
         })
         })
     }

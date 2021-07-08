@@ -103,13 +103,14 @@ export default function NavBarNew() {
 
                         ))}
 
-                        <div style={{backgroundColor:"white"}} >{item.name==='Calendar' ? <iframe
-           src="https://calendar.google.com/calendar/embed?src=jollygreengiantfood%40gmail.com&ctz=America%2FChicago"
-           style={{border:"0", width:"23vw", height:"20vh"}}
-           width="800"
-           height="600"
-           frameborder="0"
-           scrolling="no"></iframe>: null } </div>
+                        <div style={{backgroundColor:"#f59e0b"}} >{item.name==='Calendar' && user ? <iframe
+                            src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=America%2FChicago&amp;src=am9sbHlncmVlbmdpYW50Zm9vZEBnbWFpbC5jb20&amp;color=%23039BE5&amp;showTitle=0&amp;showNav=1&amp;showPrint=0&amp;showTabs=1&amp;showTz=0&amp;showCalendars=0&amp;showDate=1"
+                            style={{border:"0", width:"24vw", height:"40vh"}}
+                            width="800"
+                            height="600"
+                            frameborder="0"
+                            scrolling="no"></iframe>: null }
+                        </div>
                         </Disclosure.Panel>
                     </>
                     )}
