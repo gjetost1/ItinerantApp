@@ -16,6 +16,7 @@
     "googleapis": "^80.1.0",
     "http-proxy-middleware": "^1.0.5",
     "react-calendar": "^3.4.0",
+    "react-datepicker": "^4.1.1",
     "react-google-calendar-api": "^1.4.0",
     "react-redux": "^7.2.4",
     "react-router-dom": "^5.2.0",

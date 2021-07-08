@@ -164,7 +164,7 @@ function MapCreate() {
             {selected ? (<InfoWindow position={{lat: selected.lat, lng: selected.lng}} onCloseClick={()=>{
                 setSelected(null);
             }}>
-                <div style={{height:"55vh", width:"57vw", backgroundColor:"#333333"}}>
+                <div style={{height:"50vh", width:"25vw", backgroundColor:"#333333"}}>
                    <CreateDestination latX={selected.lat} lngY={selected.lng} />
                    {console.log(selected.lng)}
 

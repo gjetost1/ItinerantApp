@@ -48,10 +48,10 @@ const LoginForm = () => {
         <div>
           <label htmlFor="email"></label>
           <input
-            className="text-white" style={{fontSize:"3vh", float:"left", marginLeft:"4vw", marginTop:"2vh"}}
+            className="w-auto h-auto font-medium rounded-full shadow-sm" style={{fontSize:"3vh", float:"left", marginLeft:"3vw", marginTop:"2vh"}}
             name="email"
             type="text"
-            placeholder="Email"
+            placeholder=" Email"
             value={email}
             onChange={updateEmail}
           />
@@ -60,10 +60,10 @@ const LoginForm = () => {
           <label htmlFor="password"></label>
           <input
 
-            className="text-white" style={{fontSize:"3vh", float:"left", marginLeft:"4vw", marginTop:"1vh"}}
+            className="w-auto h-auto font-medium rounded-full shadow-sm" style={{fontSize:"3vh", float:"left", marginLeft:"3vw", marginTop:"1vh"}}
             name="password"
             type="password"
-            placeholder="Password"
+            placeholder=" Password"
             value={password}
             onChange={updatePassword}
           />

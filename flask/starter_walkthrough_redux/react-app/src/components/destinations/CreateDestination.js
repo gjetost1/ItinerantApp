@@ -46,7 +46,7 @@ export default function CreateDestination(latLng) {
         history.push(`/destinations`)
     }
     return (
-        <div style={{flexDirection: "column", backgroundColor:"#333333", width:"55vw", height:"55vh"}}>
+        <div style={{flexDirection: "column", backgroundColor:"#333333"}}>
             <form onSubmit={(e) => handleSubmit(e)} style={{ backgroundColor:"333333", alignItems:"right", display: "flex", flexDirection:"column"}}>
 
                 <label className="text-white" style={{fontSize:"3vh"}} htmlFor="name">Name:</label>
@@ -54,9 +54,6 @@ export default function CreateDestination(latLng) {
 
                 <label className="text-white" style={{fontSize:"3vh"}} htmlFor="owner">Owner:</label>
                 <input type="text" id="owner" onChange={(e) => setOwnerId(user.id)} value={owner_id}/>
-
-                {/* <label htmlFor="destinationType">Destination Type:</label>
-                <input type="text" id="destinationType" onChange={(e) => setDestinationType(e.target.value)} value={destinationType}/> */}
 
                 <label className="text-white" style={{fontSize:"3vh"}} htmlFor="destinationType">Destination Type:</label>
                 <select name="destinationType" id="destinationType" onChange={(e) => setDestinationType([e.target.value])} value={destinationType}>
@@ -88,7 +85,7 @@ export default function CreateDestination(latLng) {
                 <label className="text-white" style={{fontSize:"3vh"}} htmlFor="description">Description:</label>
                 <textarea id="description" onChange={(e) => setDescription(e.target.value)} value={description} />
 
-                <button className="text-white" style={{fontSize:"3vh"}} type="submit">Submit</button>
+                <button className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-yellow-500 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" style={{width:"5vw", marginLeft:"10vw"}} type="submit">Submit</button>
 
             </form>
         </div>

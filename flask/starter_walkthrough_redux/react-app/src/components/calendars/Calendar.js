@@ -17,11 +17,11 @@ export default function CalendarTest() {
                 <div className="font-medium rounded-full shadow-sm text-white"
                      style={{fontSize:"2vh",textAlign:"left", marginLeft:"26%"}}>
                      {calendars.map(calendar =>
-                        <li key={calendar.id}>
+                        <button className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-yellow-500 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" style={{margin:"1vw"}} key={calendar.id}>
                             <button onClick={e => {window.location=`/calendar/${calendar.id}`}}>
                                 {calendar.notes}
                             </button>
-                        </li>)}
+                        </button>)}
                 </div>}
             <div>
             </div>
