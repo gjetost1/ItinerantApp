@@ -33,7 +33,6 @@ export default function CreateCalendar() {
 
     async function handleSubmit(e){
         e.preventDefault();
-       let createdCalendar =
       dispatch(createCalendar(data))
 
         history.push(`/calendar`)
@@ -42,11 +41,11 @@ export default function CreateCalendar() {
         <div style={{flexDirection: "column"}}>
             <form onSubmit={(e) => handleSubmit(e)} style={{ backgroundColor:"orange", alignItems:"right", display: "flex", flexDirection:"column"}}>
 
-                <label htmlFor="name">user_id:</label>
-                <input type="text" id="user_id" onChange={(e) => setUserId(e.target.value)} value={user_id}/>
+                <label htmlFor="name">User Id:</label>
+                <input type="text" id="user_id" onChange={(e) => setUserId(user.id)} value={user_id}/>
 
                 <label htmlFor="owner">Owner:</label>
-                <input type="text" id="owner_id" onChange={(e) => setOwnerId(e.target.value)} value={owner_id}/>
+                <input type="text" id="owner_id" onChange={(e) => setOwnerId(user.id)} value={owner_id}/>
 
                 <label htmlFor="startTime">startTime:</label>
                 <input type="text" id="startTime" onChange={(e) => setStartTime(e.target.value)} value={startTime}/>

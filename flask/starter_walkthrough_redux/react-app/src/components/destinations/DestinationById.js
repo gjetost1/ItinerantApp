@@ -1,11 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
-import { getDestinationById, deleteDestination, editDestination} from '../../store/destinations'
-
-
-
-
+import { getDestinationById, deleteDestination} from '../../store/destinations'
 
 export default function DestinationById(){
     const { id } = useParams();
@@ -17,9 +13,7 @@ export default function DestinationById(){
     }, [dispatch, id])
 
     const destinations = useSelector((state )=> state.destinations)
-
     const user = useSelector(state => state.session.user)
-
 
     if (!destinations || !user) {
         return (
@@ -33,13 +27,11 @@ export default function DestinationById(){
     }
 
     const handleEdit = () => {
-
         history.push(`/destinations/${destinations.id}/edit`)
     }
 
     return (
-
-        <div className="font-medium rounded-full shadow-sm text-white" style={{fontSize:"3vh",textAlign:"left", marginLeft:"26%", fontSize:"5vh"}}> Destination Info
+        <div className="font-medium rounded-full shadow-sm text-white" style={{textAlign:"left", marginLeft:"26%", fontSize:"5vh"}}> Destination Info
             <div className='border' >
                 {/* <p style={{textAlign:"left", margin:"5px"}}>Type: {destinations.destinationType}</p> */}
                 <p className="text-white" style={{fontSize:"3vh", textAlign:"left", margin:"5px"}}>{destinations.name}</p>

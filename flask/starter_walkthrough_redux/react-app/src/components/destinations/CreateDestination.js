@@ -21,8 +21,7 @@ export default function CreateDestination(latLng) {
     const [lat, setLat] = useState(latLng.latX)
     const [lng, setLng] = useState(latLng.lngY)
     const [description, setDescription] = useState('')
-    // console.log(latX.latX)
-    console.log(latLng.latX)
+
     if(!user) return null
 
 
@@ -40,7 +39,7 @@ export default function CreateDestination(latLng) {
 
     async function handleSubmit(e){
         e.preventDefault();
-       let createdDestination =
+
       dispatch(createDestination(data))
 
         history.push(`/destinations`)
@@ -85,7 +84,7 @@ export default function CreateDestination(latLng) {
                 <label className="text-white" style={{fontSize:"3vh"}} htmlFor="description">Description:</label>
                 <textarea id="description" onChange={(e) => setDescription(e.target.value)} value={description} />
 
-                <button className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-yellow-500 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" style={{width:"5vw", marginLeft:"10vw"}} type="submit">Submit</button>
+                <button className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-yellow-500 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" type="submit">   Submit</button>
 
             </form>
         </div>

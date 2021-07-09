@@ -1,13 +1,13 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from 'react-router-dom'
+
 import { createCalendar} from "../../store/calendars"
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 export default function GoogleCalendar() {
 //form
-  const history = useHistory();
+
   const dispatch = useDispatch();
   const user = useSelector(state => state?.session.user)
   const [user_id, setUserId] = useState(user?.id)
@@ -121,13 +121,14 @@ export default function GoogleCalendar() {
             <form onSubmit={(e) => handleSubmit(e)} style={{ backgroundColor:"#333333", alignItems:"center", display: "flex", flexDirection:"column"}}>
 
                 <label htmlFor="name" className="text-white" style={{fontSize:"3vh"}}>User ID</label>
-                <input type="text" id="user_id" onChange={(e) => setUserId(user.id)} value={user_id}/>
+                <input className="rounded-full" type="text" id="user_id" onChange={(e) => setUserId(user.id)} value={user_id}/>
 
                 <label htmlFor="owner" className="text-white" style={{fontSize:"3vh"}}>Owner</label>
-                <input type="text" id="owner_id" onChange={(e) => setOwnerId(user.id)} value={owner_id}/>
+                <input className="rounded-full" type="text" id="owner_id" onChange={(e) => setOwnerId(user.id)} value={owner_id}/>
 
                 <label htmlFor="startTime" className="text-white" style={{fontSize:"3vh"}}>Start Time</label>
                   <DatePicker
+                      className="rounded-full"
                       value={startTime}
                       selected={startTime}
                       showTimeSelect
@@ -139,6 +140,7 @@ export default function GoogleCalendar() {
 
                 <label htmlFor="endTime" className="text-white" style={{fontSize:"3vh"}}>End Time</label>
                   <DatePicker
+                    className="rounded-full"
                     value={endTime}
                     selected={endTime}
                     showTimeSelect
@@ -148,19 +150,20 @@ export default function GoogleCalendar() {
                     timeClassName={handleTime}
                   />
 
-                <label htmlFor="notes" className="text-white" style={{fontSize:"3vh"}}>Notes</label>
-                <input type="text" id="notes" onChange={(e) => setNotes(e.target.value)} value={notes}/>
+                <label htmlFor="notes" className="text-white" style={{fontSize:"3vh"}}>Event Title/Notes</label>
+                <input className="rounded-full" type="text" id="notes" onChange={(e) => setNotes(e.target.value)} value={notes}/>
 
                 <button type="submit" style={{margin:"1vh", width:"12vw", float:"right"}} className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-black bg-white hover:bg-gray-900 hover:text-yellow-500  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black" onClick={handleClick}>Add Event</button>
 
             </form>
             <div>
               <iframe
+              title="navcal"
               src="https://calendar.google.com/calendar/embed?src=jollygreengiantfood%40gmail.com&ctz=America%2FChicago"
               style={{border:"0", width:"75vw", height:"68vh", float:"right"}}
               width="800"
               height="600"
-              frameborder="0"
+              frameBorder="0"
               scrolling="no"></iframe>
             </div>
 

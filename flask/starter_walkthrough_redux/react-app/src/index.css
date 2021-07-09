@@ -44,7 +44,3 @@ label {
  .grime{
     pointer-events: none;
  }
-
- @viewport {
-    orientation: landscape;
-  }

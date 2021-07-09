@@ -76,7 +76,7 @@ export const editCalendar = (calendars) => async (dispatch) => {
 };
 
 export const deleteCalendar = (calendarId) => async (dispatch) => {
-    const res = await fetch(`/api/calendars/${calendarId}/`, {
+    const res = await fetch(`/api/calendars/${calendarId}`, {
         method: 'DELETE'
     })
 

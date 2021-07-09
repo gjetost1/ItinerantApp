@@ -7,19 +7,16 @@ import {
 } from "@react-google-maps/api";
 
 import mapStyles from "./mapStyles"
-
-
-import { useDispatch, useSelector } from 'react-redux';
-
-import {NavLink} from 'react-router-dom'
+import { useDispatch } from 'react-redux';
 import { getAllDestinations } from "../store/destinations";
 import CreateDestination from "./destinations/CreateDestination";
 
 
 const libraries = ["places"]
 const mapContainerStyle = {
-    width: "100vw",
-    height: "100vh"
+    width: "75vw",
+    height: "100vh",
+    marginLeft:"25vw"
 };
 
 const center = {
@@ -40,23 +37,21 @@ function MapCreate() {
         dispatch(getAllDestinations())
     }, [dispatch])
 
-    const destinations = useSelector(state => state.destinations.destinations)
+    // const destinations = useSelector(state => state.destinations.destinations)
 
-    const handleClick = (destination) => {
-
-        setSelected({
-            "id": destination.id,
-            "lat": destination.lat,
-            "lng": destination.lng,
-            "name": destination.name,
-            "destinationType": destination.destinationType,
-            "city": destination.city,
-            "state": destination.state,
-            "address": destination.street,
-            "description": destination.description,
-
-        })
-    };
+    // const handleClick = (destination) => {
+    //     setSelected({
+    //         "id": destination.id,
+    //         "lat": destination.lat,
+    //         "lng": destination.lng,
+    //         "name": destination.name,
+    //         "destinationType": destination.destinationType,
+    //         "city": destination.city,
+    //         "state": destination.state,
+    //         "address": destination.street,
+    //         "description": destination.description,
+    //     })
+    // };
 
     const {isLoaded, loadError} = useLoadScript({
         googleMapsApiKey: 'AIzaSyDZhB_aGyFMu_-gQbJsCU7Objjh3WtBcD4',
@@ -82,10 +77,8 @@ function MapCreate() {
 
     // debug mode
 
-
     if (loadError) return "error loading maps"
     if (!isLoaded) return "loading maps"
-
 
     return (<div>
         <GoogleMap
@@ -161,14 +154,14 @@ function MapCreate() {
                     }}
                 />
             ))}
-            {selected ? (<InfoWindow position={{lat: selected.lat, lng: selected.lng}} onCloseClick={()=>{
-                setSelected(null);
-            }}>
-                <div style={{height:"50vh", width:"25vw", backgroundColor:"#333333"}}>
+            {selected ? (
+                <InfoWindow
+                    position={{lat: selected.lat, lng: selected.lng}}
+                    onCloseClick={()=>{
+                    setSelected(null);
+                }}>
+                <div style={{height:"70vh", width:"25vw", backgroundColor:"#333333"}}>
                    <CreateDestination latX={selected.lat} lngY={selected.lng} />
-                   {console.log(selected.lng)}
-
-
                 </div>
             </InfoWindow>) : null}
         </GoogleMap>
