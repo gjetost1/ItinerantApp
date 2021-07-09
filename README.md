@@ -12,4 +12,4 @@
 #### *Wandering through Itinerant*
 ![60e88bd8d9245124803048](https://user-images.githubusercontent.com/73906585/125117674-2f771300-e0b4-11eb-99a6-da3aa1a3378a.gif)
 
- Itinerant is integrated with the Google Calendar and Google Maps APIs, allowing users to link to their personal calendars when planning events and scheduling.
+ Itinerant is integrated with the [Google Calendar API](https://developers.google.com/calendar/api) and [Google Maps API](https://developers.google.com/maps), allowing users to link to their personal calendars when planning events and scheduling.
