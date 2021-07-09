@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { createCalendar} from "../../store/calendars"
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import {setHours, setMinutes} from "date-fns";
+
 
 export default function GoogleCalendar() {
 //form
@@ -12,8 +14,8 @@ export default function GoogleCalendar() {
   const user = useSelector(state => state?.session.user)
   const [user_id, setUserId] = useState(user?.id)
   const [owner_id, setOwnerId] = useState(user?.id)
-  const [startTime, setStartTime] = useState('')
-  const [endTime, setEndTime] = useState('')
+  const [startTime, setStartTime] = useState(setHours(setMinutes(new Date(), 30), 16))
+  const [endTime, setEndTime] = useState(setHours(setMinutes(new Date(), 30), 16))
   const [notes, setNotes] = useState('')
   if(!user) return null
 
@@ -67,8 +69,8 @@ export default function GoogleCalendar() {
                   'RRULE:FREQ=DAILY;COUNT=2'
                 ],
                 'attendees': [
-                  {'email': 'lpage@example.com'},
-                  {'email': 'sbrin@example.com'}
+                  {'email': 'demo@example.com'},
+                  {'email': 'itinerant@example.com'}
                 ],
                 'reminders': {
                   'useDefault': false,
@@ -109,7 +111,9 @@ export default function GoogleCalendar() {
     }
 
     let handleTime = (time) => {
-    return time.getHours() > 12 ? "text-success" : "text-error";
+
+    return time.getHours() > startTime ? "text-success" : "text-error";
+
     };
 
 
@@ -132,9 +136,12 @@ export default function GoogleCalendar() {
                       value={startTime}
                       selected={startTime}
                       showTimeSelect
+                      timeFormat="HH:mm"
+                      timeIntervals={15}
+                      timeCaption="time"
                       dateFormat="Pp"
-                      onSelect={startTime=>{setStartTime(startTime)}} //when day is clicked
-                      onChange={(e) => setStartTime(startTime)} //only when value has changed
+                      onSelect={startTime=>{setStartTime(startTime)}} //clicked
+                      onChange={(e) => setStartTime(e)} //value changed
                       timeClassName={handleTime}
                     />
 
@@ -144,9 +151,12 @@ export default function GoogleCalendar() {
                     value={endTime}
                     selected={endTime}
                     showTimeSelect
+                    timeFormat="HH:mm"
+                    timeIntervals={15}
+                    timeCaption="time"
                     dateFormat="Pp"
-                    onSelect={endTime=>{setEndTime(endTime)}} //when day is clicked
-                    onChange={(e) => setEndTime(endTime)} //only when value has changed
+                    onSelect={endTime=>{setEndTime(endTime)}} //clicked
+                    onChange={(e) => setEndTime(e)} // value changed
                     timeClassName={handleTime}
                   />
 
