@@ -1,11 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
-import { getCalendarById, deleteCalendar, editCalendar} from '../../store/calendars'
-
-
-
-
+import { getCalendarById, deleteCalendar} from '../../store/calendars'
 
 export default function CalendarById() {
     const { id } = useParams();
@@ -17,9 +13,7 @@ export default function CalendarById() {
     }, [dispatch, id])
 
     const calendars = useSelector((state )=> state.calendars)
-
     const user = useSelector(state => state.session.user)
-
 
     if (!calendars || !user) {
         return (
@@ -28,23 +22,21 @@ export default function CalendarById() {
     }
 
      const handleDelete = async () => {
-        await dispatch(deleteCalendar(calendars.id))
+      await dispatch(deleteCalendar(calendars.id))
         window.location=('/calendar')
     }
 
     const handleEdit = () => {
-
         history.push(`/calendar/${calendars.id}/edit`)
     }
 
     return (
-
-        <div className="font-medium rounded-full shadow-sm text-white" style={{fontSize:"3vh",textAlign:"left", marginLeft:"26%", fontSize:"5vh"}}> Calendar Info
+        <div className="font-medium rounded-full shadow-sm text-white" style={{textAlign:"left", marginLeft:"26%", fontSize:"5vh"}}> Calendar Info
             <div className='border' style={{ margin:"5px"}}>
 
-                <p className="text-white" style={{fontSize:"3vh", textAlign:"left", margin:"5px"}}>id: {calendars.id}</p>
-                <p className="text-white" style={{fontSize:"3vh", textAlign:"left", margin:"5px"}}>user_id: {calendars.user_id}</p>
-                <p className="text-white" style={{fontSize:"3vh", textAlign:"left", margin:"5px"}}>owner_id: {calendars.owner_id}</p>
+                <p className="text-white" style={{fontSize:"3vh", textAlign:"left", margin:"5px"}}>Id: {calendars.id}</p>
+                <p className="text-white" style={{fontSize:"3vh", textAlign:"left", margin:"5px"}}>User Id: {calendars.user_id}</p>
+                <p className="text-white" style={{fontSize:"3vh", textAlign:"left", margin:"5px"}}>Owner Id: {calendars.owner_id}</p>
                 <p className="text-white" style={{fontSize:"3vh", textAlign:"left", margin:"5px"}}>startTime: {calendars.startTime}</p>
                 <p className="text-white" style={{fontSize:"3vh", textAlign:"left", margin:"5px"}}>endTime: {calendars.endTime}</p>
                 <p className="text-white" style={{fontSize:"3vh", textAlign:"left", margin:"5px"}}>notes: {calendars.notes}</p>

@@ -7,18 +7,13 @@ import {
 } from "@react-google-maps/api";
 
 import mapStyles from "./mapStyles"
-
-
 import { useDispatch, useSelector } from 'react-redux';
-
 import {NavLink} from 'react-router-dom'
 import { getAllDestinations } from "../store/destinations";
-import CreateDestination from "./destinations/CreateDestination";
-
 
 const libraries = ["places"]
 const mapContainerStyle = {
-    width: "100vw",
+    width: "75vw",
     height: "100vh"
 };
 
@@ -30,7 +25,6 @@ const center = {
 const options = {
     styles: mapStyles
 }
-
 
 function Map() {
  //dynamic gen
@@ -64,6 +58,7 @@ function Map() {
     });
 
     const [markers, setMarkers] = React.useState([]);
+
     const [selected, setSelected] = React.useState(null);
 
     const onMapClick = React.useCallback((event) => {
@@ -80,13 +75,12 @@ function Map() {
         mapRef.current = map;
     },[])
 
-
     if (loadError) return "error loading maps"
     if (!isLoaded) return "loading maps"
 
-
-    return (<div>
+    return (<div style={{marginLeft:"25vw"}}>
         <GoogleMap
+
             mapContainerStyle= {mapContainerStyle}
             zoom={12}
             center= {center}
@@ -94,6 +88,7 @@ function Map() {
             onClick={onMapClick}
             onLoad={onMapLoad}
         >
+
 
                 {/* dynamic gen */}
 

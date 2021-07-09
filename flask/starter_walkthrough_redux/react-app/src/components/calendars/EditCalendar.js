@@ -22,8 +22,8 @@ export default function EditDestination() {
 
     const user = useSelector(state => state.session.user)
 
-    const [user_id, setUserId] = useState('')
-    const [owner_id, setOwnerId] = useState(1)
+    const [user_id, setUserId] = useState(user.id)
+    const [owner_id, setOwnerId] = useState(user.id)
     const [startTime, setStartTime] = useState('')
     const [endTime, setEndTime] = useState('')
     const [notes, setNotes] = useState('')
@@ -41,7 +41,7 @@ export default function EditDestination() {
     useEffect(()=>{
       InitVals()
 
-    }, [calendars])
+    },[calendars])
 
     if(!user) return null
 
@@ -57,31 +57,31 @@ export default function EditDestination() {
 
     async function handleSubmit(e){
         e.preventDefault();
-       let createdCalendar =
+
       dispatch(editCalendar(data))
 
         history.push(`/calendar/`)
     }
     return (
         <div style={{flexDirection: "column", textAlign:"center", marginLeft:"25%"}}>
-            <form onSubmit={(e) => handleSubmit(e)} style={{ backgroundColor:"orange", alignItems:"right", display: "flex", flexDirection:"column"}}>
-                <label htmlFor="user_id">user_id:</label>
-                <input type="text" id="name" onChange={(e) => setUserId(e.target.value)} value={user_id}/>
+            <form onSubmit={(e) => handleSubmit(e)} style={{ backgroundColor:"#f59e0b", alignItems:"right", display: "flex", flexDirection:"column"}}>
+                <label className="text-white" style={{fontSize:"3vh"}} htmlFor="user_id">User Id</label>
+                <input className="rounded-full" type="text" id="name" onChange={(e) => setUserId(user.id)} value={user_id}/>
 
-                <label htmlFor="owner">Owner:</label>
-                <input type="text" id="owner" onChange={(e) => setOwnerId(e.target.value)} value={owner_id}/>
+                <label className="text-white" style={{fontSize:"3vh"}} htmlFor="owner">Owner</label>
+                <input className="rounded-full" type="text" id="owner" onChange={(e) => setOwnerId(user.id)} value={owner_id}/>
 
-                <label htmlFor="startTime">startTime:</label>
-                <input type="text" id="startTime" onChange={(e) => setStartTime(e.target.value)} value={startTime} />
+                <label className="text-white" style={{fontSize:"3vh"}} htmlFor="startTime">Start Time</label>
+                <input className="rounded-full" type="text" id="startTime" onChange={(e) => setStartTime(e.target.value)} value={startTime} />
 
-                <label htmlFor="endTime">endTime:</label>
-                <input type="text" id="endTime" onChange={(e) => setEndTime(e.target.value)} value={endTime} />
+                <label className="text-white" style={{fontSize:"3vh"}} htmlFor="endTime">End Time</label>
+                <input className="rounded-full" type="text" id="endTime" onChange={(e) => setEndTime(e.target.value)} value={endTime} />
 
-                <label htmlFor="notes">notes:</label>
-                <input type="text" id="notes" onChange={(e) => setNotes(e.target.value)} value={notes} />
+                <label className="text-white" style={{fontSize:"3vh"}} htmlFor="notes">notes:</label>
+                <input className="rounded-full" type="text" id="notes" onChange={(e) => setNotes(e.target.value)} value={notes} />
 
 
-                <button type="submit">Submit</button>
+                <button className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-black bg-white hover:bg-gray-900 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black"  style={{margin:"10px"}} type="submit">Submit</button>
 
             </form>
         </div>

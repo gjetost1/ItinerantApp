@@ -67,42 +67,48 @@ export default function EditDestination() {
 
     async function handleSubmit(e){
         e.preventDefault();
-       let createdDestination =
-      dispatch(editDestination(data))
-
+        dispatch(editDestination(data))
         history.push(`/destinations/`)
     }
     return (
         <div style={{flexDirection: "column", textAlign:"center", marginLeft:"25%"}}>
-            <form onSubmit={(e) => handleSubmit(e)} style={{ backgroundColor:"orange", alignItems:"right", display: "flex", flexDirection:"column"}}>
+            <form onSubmit={(e) => handleSubmit(e)} style={{ backgroundColor:"#f59e0b", alignItems:"right", display: "flex", flexDirection:"column"}}>
                 <label className="text-white" style={{fontSize:"3vh"}} htmlFor="name">Name:</label>
-                <input type="text" id="name" onChange={(e) => setName(e.target.value)} value={name}/>
+                <input className="rounded-full" type="text" id="name" onChange={(e) => setName(e.target.value)} value={name}/>
 
                 <label className="text-white" style={{fontSize:"3vh"}} htmlFor="owner">Owner:</label>
-                <input type="text" id="owner" onChange={(e) => setOwnerId(e.target.value)} value={owner_id} placeholder={destinations.owner_id}/>
+                <input className="rounded-full" type="text" id="owner" onChange={(e) => setOwnerId(e.target.value)} value={owner_id} placeholder={destinations.owner_id}/>
 
                 <label className="text-white" style={{fontSize:"3vh"}} htmlFor="destinationType">Destination Type:</label>
-                <input type="text" id="destinationType" onChange={(e) => setDestinationType(e.target.value)} value={destinationType} placeholder={destinations.destinationType}/>
+                <select className="rounded-full" name="destinationType" id="destinationType" onChange={(e) => setDestinationType([e.target.value])} value={destinationType}>
+                    <option value="1">Park</option>
+                    <option value="2">Restaurant</option>
+                    <option value="3">Bar</option>
+                    <option value="4">Music</option>
+                    <option value="5">Library</option>
+                    <option value="6">Lodging</option>
+                    <option value="7">Destination</option>
+                </select>
 
                 <label className="text-white" style={{fontSize:"3vh"}} htmlFor="city">City:</label>
-                <input type="text" id="city" onChange={(e) => setCity(e.target.value)} value={city} placeholder={destinations.city}/>
+                <input className="rounded-full" type="text" id="city" onChange={(e) => setCity(e.target.value)} value={city} placeholder={destinations.city}/>
 
                 <label className="text-white" style={{fontSize:"3vh"}} htmlFor="state">State:</label>
-                <input type="text" id="state" onChange={(e) => setState(e.target.value)} value={state} placeholder={destinations.state}/>
+                <input className="rounded-full" type="text" id="state" onChange={(e) => setState(e.target.value)} value={state} placeholder={destinations.state}/>
 
                 <label className="text-white" style={{fontSize:"3vh"}} htmlFor="address">Address:</label>
-                <input type="text" id="address" onChange={(e) => setAddress(e.target.value)} value={address} placeholder={destinations.address}/>
+                <input className="rounded-full" type="text" id="address" onChange={(e) => setAddress(e.target.value)} value={address} placeholder={destinations.address}/>
 
                 <label className="text-white" style={{fontSize:"3vh"}} htmlFor="lat">Latitude:</label>
-                <input type="text" id="lat" onChange={(e) => setLat(e.target.value)} value={lat} placeholder={destinations.lat}/>
+                <input className="rounded-full" type="text" id="lat" onChange={(e) => setLat(e.target.value)} value={lat} placeholder={destinations.lat}/>
 
                 <label className="text-white" style={{fontSize:"3vh"}} htmlFor="lng">Longitude:</label>
-                <input type="text" id="lng" onChange={(e) => setLng(e.target.value)} value={lng} placeholder={destinations.lng}/>
+                <input className="rounded-full" type="text" id="lng" onChange={(e) => setLng(e.target.value)} value={lng} placeholder={destinations.lng}/>
 
                 <label className="text-white" style={{fontSize:"3vh"}} htmlFor="description">Description:</label>
-                <textarea id="description" onChange={(e) => setDescription(e.target.value)} value={description} placeholder={destinations.description} />
+                <textarea  id="description" onChange={(e) => setDescription(e.target.value)} value={description} placeholder={destinations.description} />
 
-                <button className="text-white" style={{fontSize:"3vh"}} type="submit">Submit</button>
+                <button  className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-black bg-white hover:bg-gray-900 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black"  style={{margin:"10px", textAlign:"center"}} type="submit">   Submit</button>
 
             </form>
         </div>

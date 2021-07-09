@@ -29,11 +29,12 @@ export default function CalendarTest() {
                 {/* google calendar */}
                 <div>
           <iframe
+           title="fullcal"
            src="https://calendar.google.com/calendar/embed?src=jollygreengiantfood%40gmail.com&ctz=America%2FChicago"
            style={{border:"0", width:"70vw", height:"70vh", float:"right", marginRight:"3vw", marginTop:"3vh"}}
            width="800"
            height="600"
-           frameborder="0"
+           frameBorder="0"
            scrolling="no"></iframe>
           </div>
 
