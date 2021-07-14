@@ -80,12 +80,11 @@ export default function GoogleCalendar() {
                   ]
                 }
               };
+              // create
             const request = gapi.client.calendar.events.insert({
                 "calendarId": "primary",
                 'resource': event,
             })
-
-            // create
             request.execute(event => {
               window.location=(`/calendar`)
                 window.open(event.htmlLink)
@@ -106,6 +105,14 @@ export default function GoogleCalendar() {
 
             //modify
             //delete
+          //   const requestDelete = gapi.client.calendar.events.delete({
+          //     "calendarId": "primary",
+          //     'resource': event,
+          // })
+          // requestDelete.execute(event => {
+          //   window.location=(`/calendar`)
+          //     window.open(event.htmlLink)
+          // })
         })
         })
     }

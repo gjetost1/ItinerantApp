@@ -24,11 +24,13 @@ export default function CalendarById() {
      const handleDelete = async () => {
       await dispatch(deleteCalendar(calendars.id))
         window.location=('/calendar')
-    }
 
+    }
     const handleEdit = () => {
         history.push(`/calendar/${calendars.id}/edit`)
     }
+
+
 
     return (
         <div className="font-medium rounded-full shadow-sm text-white" style={{textAlign:"left", marginLeft:"26%", fontSize:"5vh"}}> Calendar Info
