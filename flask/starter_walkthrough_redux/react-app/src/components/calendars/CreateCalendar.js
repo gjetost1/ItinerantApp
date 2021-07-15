@@ -16,8 +16,8 @@ export default function CreateCalendar() {
 
     const [startTime, setStartTime] = useState(setHours(setMinutes(new Date(), 30), 16))
     const [endTime, setEndTime] = useState(setHours(setMinutes(new Date(), 30), 16))
-    const [user_id, setUserId] = useState('')
-    const [owner_id, setOwnerId] = useState(0)
+    const [user_id, setUserId] = useState(user.id)
+    const [owner_id, setOwnerId] = useState(user.id)
     const [notes, setNotes] = useState('')
 
 
@@ -50,11 +50,11 @@ export default function CreateCalendar() {
         <div style={{flexDirection: "column"}}>
             <form onSubmit={(e) => handleSubmit(e)} style={{ backgroundColor:"orange", alignItems:"right", display: "flex", flexDirection:"column"}}>
 
-                <label htmlFor="name">User Id:</label>
+                {/* <label htmlFor="name">User Id:</label>
                 <input type="text" id="user_id" onChange={(e) => setUserId(user.id)} value={user_id}/>
 
                 <label htmlFor="owner">Owner:</label>
-                <input type="text" id="owner_id" onChange={(e) => setOwnerId(user.id)} value={owner_id}/>
+                <input type="text" id="owner_id" onChange={(e) => setOwnerId(user.id)} value={owner_id}/> */}
 
                 <label htmlFor="startTime">startTime:</label>
                 <DatePicker

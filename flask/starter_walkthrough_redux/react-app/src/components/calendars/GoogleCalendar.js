@@ -21,6 +21,7 @@ export default function GoogleCalendar() {
 
   const data = {
 
+
     user_id,
     owner_id,
     startTime,
@@ -29,9 +30,19 @@ export default function GoogleCalendar() {
 
   };
 
+  function hider() {
+    let btn = document.getElementById("but")
+    if (btn.style.display === "none") {
+      btn.style.display = "block";
+    } else {
+      btn.style.display = "none"
+    }
+  }
+
   async function handleSubmit(e){
     e.preventDefault();
     dispatch(createCalendar(data))
+    window.location=(`/calendar`)
 
   }
     const gapi = window.gapi
@@ -127,15 +138,18 @@ export default function GoogleCalendar() {
     return (
         <div style={{flexDirection:"row", zIndex:"10", marginTop:"auto", marginLeft:"25vw"}}>
 
+          <div id="but" className="text-white text-xs" style={{textAlign:"center", margin:"1vh"}}>Please verify your identity with the developer to make Calendar API requests! You can still add events to the database!
+            <button onClick={hider}  style={{height:'2vh', width:"1vw", margin:"2px"}} className="inline-flex items-center px-2  border border-transparent text-base font-medium rounded-full shadow-sm text-black bg-white hover:bg-gray-900 hover:text-yellow-500  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black">x</button>
+          </div>
             {/* create form for event */}
             <div style={{flexDirection: "column"}}>
             <form onSubmit={(e) => handleSubmit(e)} style={{ backgroundColor:"#333333", alignItems:"center", display: "flex", flexDirection:"column"}}>
 
-                <label htmlFor="name" className="text-white" style={{fontSize:"3vh"}}>User ID</label>
+                {/* <label htmlFor="name" className="text-white" style={{fontSize:"3vh"}}>User ID</label>
                 <input className="rounded-full" type="text" id="user_id" onChange={(e) => setUserId(user.id)} value={user_id}/>
 
                 <label htmlFor="owner" className="text-white" style={{fontSize:"3vh"}}>Owner</label>
-                <input className="rounded-full" type="text" id="owner_id" onChange={(e) => setOwnerId(user.id)} value={owner_id}/>
+                <input className="rounded-full" type="text" id="owner_id" onChange={(e) => setOwnerId(user.id)} value={owner_id}/> */}
 
                 <label htmlFor="startTime" className="text-white" style={{fontSize:"3vh"}}>Start Time</label>
                   <DatePicker
