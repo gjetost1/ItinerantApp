@@ -80,7 +80,7 @@ export default function EditDestination() {
                 <input className="rounded-full" type="text" id="owner" onChange={(e) => setOwnerId(user.id)} value={owner_id}/> */}
 
                 <label className="text-white" style={{fontSize:"3vh"}} htmlFor="startTime">Start Time</label>
-                <DatePicker
+                {/* <DatePicker
                       className="rounded-full"
                       value={startTime}
                       selected={startTime}
@@ -92,24 +92,24 @@ export default function EditDestination() {
                       onSelect={startTime=>{setStartTime(startTime)}} //clicked
                       onChange={(e) => setStartTime(e)} //value changed
                       timeClassName={handleTime}
-                    />
-                {/* <input className="rounded-full" type="text" id="startTime" onChange={(e) => setStartTime(e.target.value)} value={startTime} /> */}
+                    /> */}
+                <input className="rounded-full" type="text" id="startTime" onChange={(e) => setStartTime(e.target.value)} value={startTime} />
 
                 <label className="text-white" style={{fontSize:"3vh"}} htmlFor="endTime">End Time</label>
-                <DatePicker
+                {/* <DatePicker
                       className="rounded-full"
-                      value={startTime}
-                      selected={startTime}
+                      value={endTime}
+                      selected={endTime}
                       showTimeSelect
                       timeFormat="HH:mm"
                       timeIntervals={15}
                       timeCaption="time"
                       dateFormat="Pp"
-                      onSelect={startTime=>{setStartTime(startTime)}} //clicked
-                      onChange={(e) => setStartTime(e)} //value changed
+                      onSelect={endTime=>{setEndTime(endTime)}} //clicked
+                      onChange={(e) => setEndTime(e)} //value changed
                       timeClassName={handleTime}
-                    />
-                {/* <input className="rounded-full" type="text" id="endTime" onChange={(e) => setEndTime(e.target.value)} value={endTime} /> */}
+                    /> */}
+                <input className="rounded-full" type="text" id="endTime" onChange={(e) => setEndTime(e.target.value)} value={endTime} />
 
                 <label className="text-white" style={{fontSize:"3vh"}} htmlFor="notes">notes:</label>
                 <input className="rounded-full" type="text" id="notes" onChange={(e) => setNotes(e.target.value)} value={notes} />
