@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { getCalendarById, deleteCalendar} from '../../store/calendars'
 
 export default function CalendarById() {
     const { id } = useParams();
     const dispatch = useDispatch();
-    const history = useHistory();
+    // const history = useHistory();
 
     useEffect(()=>{
     dispatch(getCalendarById(id))
@@ -24,11 +24,13 @@ export default function CalendarById() {
      const handleDelete = async () => {
       await dispatch(deleteCalendar(calendars.id))
         window.location=('/calendar')
+
+    }
+    const handleEdit = () => {
+        window.location=(`/calendar/${calendars.id}/edit`)
     }
 
-    const handleEdit = () => {
-        history.push(`/calendar/${calendars.id}/edit`)
-    }
+
 
     return (
         <div className="font-medium rounded-full shadow-sm text-white" style={{textAlign:"left", marginLeft:"26%", fontSize:"5vh"}}> Calendar Info

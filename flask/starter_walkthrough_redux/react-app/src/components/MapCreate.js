@@ -28,6 +28,14 @@ const options = {
     styles: mapStyles
 }
 
+function hider() {
+    let btn = document.getElementById("but")
+    if (btn.style.display === "none") {
+      btn.style.display = "block";
+    } else {
+      btn.style.display = "none"
+    }
+  }
 
 function MapCreate() {
  //dynamic gen
@@ -81,6 +89,9 @@ function MapCreate() {
     if (!isLoaded) return "loading maps"
 
     return (<div>
+      <div id="but" className="text-white text-xs" style={{left:"50%", margin:"1vh", position:"absolute", zIndex:"999"}}>Click anywhere on the map to make a marker!
+            <button onClick={hider}  style={{height:'2vh', width:"1vw", margin:"2px"}} className="inline-flex items-center px-2  border border-transparent text-base font-medium rounded-full shadow-sm text-black bg-white hover:bg-gray-900 hover:text-yellow-500  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black">x</button>
+          </div>
         <GoogleMap
             mapContainerStyle= {mapContainerStyle}
             zoom={12}
