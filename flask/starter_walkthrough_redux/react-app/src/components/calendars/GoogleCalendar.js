@@ -1,6 +1,6 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
-
+import { useHistory } from 'react-router-dom'
 import { createCalendar} from "../../store/calendars"
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -9,9 +9,9 @@ import {setHours, setMinutes} from "date-fns";
 
 export default function GoogleCalendar() {
 //form
-
+  const history = useHistory();
   const dispatch = useDispatch();
-  const user = useSelector(state => state?.session.user)
+  const user = useSelector(state => state.session.user)
   const [user_id, setUserId] = useState(user?.id)
   const [owner_id, setOwnerId] = useState(user?.id)
   const [startTime, setStartTime] = useState(setHours(setMinutes(new Date(), 30), 16))
@@ -20,7 +20,6 @@ export default function GoogleCalendar() {
   if(!user) return null
 
   const data = {
-
 
     user_id,
     owner_id,
@@ -39,10 +38,14 @@ export default function GoogleCalendar() {
     }
   }
 
+  let handleTime = (time) => {
+    return time.getHours() > startTime ? "text-success" : "text-error";
+  };
+
   async function handleSubmit(e){
     e.preventDefault();
     dispatch(createCalendar(data))
-    window.location=(`/calendar`)
+
 
   }
     const gapi = window.gapi
@@ -76,12 +79,9 @@ export default function GoogleCalendar() {
                   'dateTime': endTime,
                   'timeZone': 'America/Los_Angeles'
                 },
-                'recurrence': [
-                  'RRULE:FREQ=DAILY;COUNT=2'
-                ],
                 'attendees': [
-                  {'email': 'demo@example.com'},
-                  {'email': 'itinerant@example.com'}
+                  {'email': 'lpage@example.com'},
+                  {'email': 'sbrin@example.com'}
                 ],
                 'reminders': {
                   'useDefault': false,
@@ -91,68 +91,53 @@ export default function GoogleCalendar() {
                   ]
                 }
               };
-              // create
             const request = gapi.client.calendar.events.insert({
                 "calendarId": "primary",
                 'resource': event,
             })
+
+            // create
             request.execute(event => {
               window.location=(`/calendar`)
                 window.open(event.htmlLink)
+
             })
 
-            // get
-            gapi.client.calendar.events.list({
-              'calendarId': 'primary',
-              'timeMin': (new Date().toISOString()),
-              'showDeleted': false,
-              'singleEvents': true,
-              'maxResults': 10,
-              'orderBy': 'startTime'
-            }).then(response => {
-              const events = response.result.items
-              console.log("EVENTS: ", events)
-            })
-
-            //modify
-            //delete
-          //   const requestDelete = gapi.client.calendar.events.delete({
-          //     "calendarId": "primary",
-          //     'resource': event,
-          // })
-          // requestDelete.execute(event => {
-          //   window.location=(`/calendar`)
-          //     window.open(event.htmlLink)
-          // })
+            // get from database
+            // gapi.client.calendar.events.list({
+            //   'calendarId': 'primary',
+            //   'timeMin': (new Date().toISOString()),
+            //   'showDeleted': false,
+            //   'singleEvents': true,
+            //   'maxResults': 10,
+            //   'orderBy': 'startTime'
+            // }).then(response => {
+            //   const events = response.result.items
+            //   console.log("EVENTS: ", events)
+            // })
         })
         })
     }
 
-    let handleTime = (time) => {
-
-    return time.getHours() > startTime ? "text-success" : "text-error";
-
-    };
-
 
     return (
         <div style={{flexDirection:"row", zIndex:"10", marginTop:"auto", marginLeft:"25vw"}}>
-
-          <div id="but" className="text-white text-xs" style={{textAlign:"center", margin:"1vh"}}>Please verify your identity with the developer to make Calendar API requests! You can still add events to the database!
-            <button onClick={hider}  style={{height:'2vh', width:"1vw", margin:"2px"}} className="inline-flex items-center px-2  border border-transparent text-base font-medium rounded-full shadow-sm text-black bg-white hover:bg-gray-900 hover:text-yellow-500  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black">x</button>
+          <div id="but" className="text-white text-xs" style={{textAlign:"center", margin:"1vh"}}>Please verify your identity with the developer to make Calendar API requests! You can still add events to the database!<button onClick={hider}  style={{height:'2vh', width:"1vw", margin:"2px"}} className="inline-flex items-center px-2  border border-transparent text-base font-medium rounded-full shadow-sm text-black bg-white hover:bg-gray-900 hover:text-yellow-500  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black">x</button>
           </div>
+
             {/* create form for event */}
             <div style={{flexDirection: "column"}}>
             <form onSubmit={(e) => handleSubmit(e)} style={{ backgroundColor:"#333333", alignItems:"center", display: "flex", flexDirection:"column"}}>
 
-                {/* <label htmlFor="name" className="text-white" style={{fontSize:"3vh"}}>User ID</label>
-                <input className="rounded-full" type="text" id="user_id" onChange={(e) => setUserId(user.id)} value={user_id}/>
+                {/* <label htmlFor="name" className="text-white" style={{fontSize:"3vh"}}>user_id:</label>
+                <input className="rounded-full" type="text" id="user_id" onChange={(e) => setUserId(e.target.value)} value={user_id}/>
 
-                <label htmlFor="owner" className="text-white" style={{fontSize:"3vh"}}>Owner</label>
-                <input className="rounded-full" type="text" id="owner_id" onChange={(e) => setOwnerId(user.id)} value={owner_id}/> */}
+                <label htmlFor="owner" className="text-white" style={{fontSize:"3vh"}}>Owner:</label>
+                <input className="rounded-full" type="text" id="owner_id" onChange={(e) => setOwnerId(e.target.value)} value={owner_id}/> */}
 
                 <label htmlFor="startTime" className="text-white" style={{fontSize:"3vh"}}>Start Time</label>
-                  <DatePicker
+                {/* <input type="text" id="startTime" onChange={(e) => setStartTime(e.target.value)} value={startTime}/> */}
+                    <DatePicker
                       className="rounded-full"
                       value={startTime}
                       selected={startTime}
@@ -161,12 +146,13 @@ export default function GoogleCalendar() {
                       timeIntervals={15}
                       timeCaption="time"
                       dateFormat="Pp"
-                      onSelect={startTime=>{setStartTime(startTime)}} //clicked
+                      // onSelect={startTime=>{setStartTime(startTime)}} //clicked
                       onChange={(e) => setStartTime(e)} //value changed
                       timeClassName={handleTime}
                     />
 
                 <label htmlFor="endTime" className="text-white" style={{fontSize:"3vh"}}>End Time</label>
+                {/* <input type="text" id="endTime" onChange={(e) => setEndTime(e.target.value)} value={endTime}/> */}
                   <DatePicker
                     className="rounded-full"
                     value={endTime}
@@ -176,12 +162,12 @@ export default function GoogleCalendar() {
                     timeIntervals={15}
                     timeCaption="time"
                     dateFormat="Pp"
-                    onSelect={endTime=>{setEndTime(endTime)}} //clicked
+                    // onSelect={endTime=>{setEndTime(endTime)}} //clicked
                     onChange={(e) => setEndTime(e)} // value changed
                     timeClassName={handleTime}
                   />
 
-                <label htmlFor="notes" className="text-white" style={{fontSize:"3vh"}}>Event Title/Notes</label>
+                <label htmlFor="notes" className="text-white" style={{fontSize:"3vh"}}>Title/Notes</label>
                 <input className="rounded-full" type="text" id="notes" onChange={(e) => setNotes(e.target.value)} value={notes}/>
 
                 <button type="submit" style={{margin:"1vh", width:"12vw", float:"right"}} className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-black bg-white hover:bg-gray-900 hover:text-yellow-500  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black" onClick={handleClick}>Add Event</button>
@@ -189,7 +175,6 @@ export default function GoogleCalendar() {
             </form>
             <div>
               <iframe
-              title="navcal"
               src="https://calendar.google.com/calendar/embed?src=jollygreengiantfood%40gmail.com&ctz=America%2FChicago"
               style={{border:"0", width:"75vw", height:"68vh", float:"right"}}
               width="800"
