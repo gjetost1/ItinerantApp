@@ -1,7 +1,7 @@
 # ItinerantApp
 
 ### *by Daniel Rosen - [Visit Itinerant](https://i-tinerant.herokuapp.com/)*
- Itinerant is an itinerary planning app built on Python-Flask and React. 
+ Itinerant is an itinerary planning app built on PSQL, Python-Flask and React. 
 ---
 ### Table of Contents
 - [Wiki](https://github.com/gjetost1/ItinerantApp/wiki)
